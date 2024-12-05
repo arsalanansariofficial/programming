@@ -197,6 +197,71 @@ insert into world (name, continent, area, population, gdp) values ('andorra', 'e
 insert into world (name, continent, area, population, gdp) values ('angola', 'africa', '1246700', '20609294', '100990000000');
 ```
 
+### 01148. Article Views 1
+
+#### Statement
+
+```sql
+Table: Views
+
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| article_id    | int     |
+| author_id     | int     |
+| viewer_id     | int     |
+| view_date     | date    |
++---------------+---------+
+
+There is no primary key (column with unique values) for this table, the table may have duplicate rows.
+
+Each row of this table indicates that some viewer viewed an article (written by some author) on some date.
+
+Note that equal author_id and viewer_id indicate the same person.
+
+Write a solution to find all the authors that viewed at least one of their own articles.
+
+Input:
+Views table:
++------------+-----------+-----------+------------+
+| article_id | author_id | viewer_id | view_date  |
++------------+-----------+-----------+------------+
+| 1          | 3         | 5         | 2019-08-01 |
+| 1          | 3         | 6         | 2019-08-02 |
+| 2          | 7         | 7         | 2019-08-01 |
+| 2          | 7         | 6         | 2019-08-02 |
+| 4          | 7         | 1         | 2019-07-22 |
+| 3          | 4         | 4         | 2019-07-21 |
+| 3          | 4         | 4         | 2019-07-21 |
++------------+-----------+-----------+------------+
+
+Output:
++------+
+| id   |
++------+
+| 4    |
+| 7    |
++------+
+```
+
+#### Schema
+
+```sql
+drop database sql_50;
+
+create table if not exists views (article_id int, author_id int, viewer_id int, view_date date);
+
+truncate table views;
+
+insert into views (article_id, author_id, viewer_id, view_date) values ('1', '3', '5', '2019-08-01');
+insert into views (article_id, author_id, viewer_id, view_date) values ('1', '3', '6', '2019-08-02');
+insert into views (article_id, author_id, viewer_id, view_date) values ('2', '7', '7', '2019-08-01');
+insert into views (article_id, author_id, viewer_id, view_date) values ('2', '7', '6', '2019-08-02');
+insert into views (article_id, author_id, viewer_id, view_date) values ('4', '7', '1', '2019-07-22');
+insert into views (article_id, author_id, viewer_id, view_date) values ('3', '4', '4', '2019-07-21');
+insert into views (article_id, author_id, viewer_id, view_date) values ('3', '4', '4', '2019-07-21');
+```
+
 ## Basic Joins
 
 An introduction to **Join** in SQL
