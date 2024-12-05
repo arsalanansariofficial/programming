@@ -69,6 +69,70 @@ insert into products (product_id, low_fats, recyclable) values ('3', 'y', 'y');
 insert into products (product_id, low_fats, recyclable) values ('4', 'n', 'n');
 ```
 
+### 00584. Find Customer Referee
+
+#### Statement
+
+```sql
+Table: Customer
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| name        | varchar |
+| referee_id  | int     |
++-------------+---------+
+
+In SQL, id is the primary key column for this table.
+
+Each row of this table indicates the id of a customer, their name, and the id of the customer who referred them.
+
+Find the names of the customer that are not referred by the customer with id = 2.
+
+The result format is in the following example.
+
+Input:
+Customer table:
++----+------+------------+
+| id | name | referee_id |
++----+------+------------+
+| 1  | Will | null       |
+| 2  | Jane | null       |
+| 3  | Alex | 2          |
+| 4  | Bill | null       |
+| 5  | Zack | 1          |
+| 6  | Mark | 2          |
++----+------+------------+
+
+Output:
++------+
+| name |
++------+
+| Will |
+| Jane |
+| Bill |
+| Zack |
++------+
+```
+
+#### Schema
+
+```sql
+drop database sql_50;
+
+create table if not exists customer (id int, name varchar(25), referee_id int);
+
+truncate table customer;
+
+insert into customer (id, name, referee_id) values ('1', 'will', null);
+insert into customer (id, name, referee_id) values ('2', 'jane', null);
+insert into customer (id, name, referee_id) values ('3', 'alex', '2');
+insert into customer (id, name, referee_id) values ('4', 'bill', null);
+insert into customer (id, name, referee_id) values ('5', 'zack', '1');
+insert into customer (id, name, referee_id) values ('6', 'mark', '2');
+```
+
 ## Basic Joins
 
 An introduction to **Join** in SQL
