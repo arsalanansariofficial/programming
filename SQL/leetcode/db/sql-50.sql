@@ -46,3 +46,10 @@ insert into views (article_id, author_id, viewer_id, view_date) values ('2', '7'
 insert into views (article_id, author_id, viewer_id, view_date) values ('4', '7', '1', '2019-07-22');
 insert into views (article_id, author_id, viewer_id, view_date) values ('3', '4', '4', '2019-07-21');
 insert into views (article_id, author_id, viewer_id, view_date) values ('3', '4', '4', '2019-07-21');
+
+create table if not exists tweets(tweet_id int, content varchar(50));
+
+truncate table tweets;
+
+insert into tweets (tweet_id, content) values ('1', 'let us code');
+insert into tweets (tweet_id, content) values ('2', 'more than fifteen chars are here!');

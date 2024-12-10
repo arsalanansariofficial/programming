@@ -262,6 +262,159 @@ insert into views (article_id, author_id, viewer_id, view_date) values ('3', '4'
 insert into views (article_id, author_id, viewer_id, view_date) values ('3', '4', '4', '2019-07-21');
 ```
 
+### 01683. Invalid Tweets
+
+#### Statement
+
+```sql
+Table: Tweets
+
++----------------+---------+
+| Column Name    | Type    |
++----------------+---------+
+| tweet_id       | int     |
+| content        | varchar |
++----------------+---------+
+
+tweet_id is the primary key (column with unique values) for this table.
+
+content consists of characters on an American Keyboard, and no other special characters.
+This table contains all the tweets in a social media app.
+
+Write a solution to find the IDs of the invalid tweets. The tweet is invalid if the number of characters used in the content of the tweet is strictly greater than 15.
+
+Input:
+Tweets table:
++----------+-----------------------------------+
+| tweet_id | content                           |
++----------+-----------------------------------+
+| 1        | Let us Code                       |
+| 2        | More than fifteen chars are here! |
++----------+-----------------------------------+
+
+Output:
++----------+
+| tweet_id |
++----------+
+| 2        |
++----------+
+
+Explanation:
+
+Tweet 1 has length = 11. It is a valid tweet.
+
+Tweet 2 has length = 33. It is an invalid tweet.
+```
+
+#### Schema
+
+```sql
+drop database sql_50;
+
+create table if not exists tweets(tweet_id int, content varchar(50));
+
+truncate table tweets;
+
+insert into tweets (tweet_id, content) values ('1', 'let us code');
+insert into tweets (tweet_id, content) values ('2', 'more than fifteen chars are here!');
+```
+
+### 01378. Replace Employee ID With The Unique Identifier
+
+#### Statement
+
+```sql
+Table: Employees
+
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| id            | int     |
+| name          | varchar |
++---------------+---------+
+
+id is the primary key (column with unique values) for this table.
+
+Each row of this table contains the id and the name of an employee in a company.
+
+
+Table: EmployeeUNI
+
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| id            | int     |
+| unique_id     | int     |
++---------------+---------+
+
+(id, unique_id) is the primary key (combination of columns with unique values) for this table.
+
+Each row of this table contains the id and the corresponding unique id of an employee in the company.
+
+Write a solution to show the unique ID of each user, If a user does not have a unique ID replace just show null.
+
+Input:
+Employees table:
++----+----------+
+| id | name     |
++----+----------+
+| 1  | Alice    |
+| 7  | Bob      |
+| 11 | Meir     |
+| 90 | Winston  |
+| 3  | Jonathan |
++----+----------+
+
+EmployeeUNI table:
++----+-----------+
+| id | unique_id |
++----+-----------+
+| 3  | 1         |
+| 11 | 2         |
+| 90 | 3         |
++----+-----------+
+
+Output:
++-----------+----------+
+| unique_id | name     |
++-----------+----------+
+| null      | Alice    |
+| null      | Bob      |
+| 2         | Meir     |
+| 3         | Winston  |
+| 1         | Jonathan |
++-----------+----------+
+
+Explanation:
+Alice and Bob do not have a unique ID, We will show null instead.
+The unique ID of Meir is 2.
+The unique ID of Winston is 3.
+The unique ID of Jonathan is 1.
+```
+
+#### Schema
+
+```sql
+drop database sql_50;
+
+create table if not exists employees (id int, name varchar(20));
+create table if not exists employeeuni (id int, unique_id int);
+
+truncate table employees;
+
+insert into employees (id, name) values ('1', 'alice');
+insert into employees (id, name) values ('7', 'bob');
+insert into employees (id, name) values ('11', 'meir');
+insert into employees (id, name) values ('90', 'winston');
+insert into employees (id, name) values ('3', 'jonathan');
+
+truncate table employeeuni;
+
+insert into employeeuni (id, unique_id) values ('3', '1');
+insert into employeeuni (id, unique_id) values ('11', '2');
+insert into employeeuni (id, unique_id) values ('90', '3');
+```
+
 ## Basic Joins
 
 An introduction to **Join** in SQL
