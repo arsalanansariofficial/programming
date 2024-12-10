@@ -53,3 +53,20 @@ truncate table tweets;
 
 insert into tweets (tweet_id, content) values ('1', 'let us code');
 insert into tweets (tweet_id, content) values ('2', 'more than fifteen chars are here!');
+
+create table if not exists employees (id int, name varchar(20));
+create table if not exists employeeuni (id int, unique_id int);
+
+truncate table employees;
+
+insert into employees (id, name) values ('1', 'alice');
+insert into employees (id, name) values ('7', 'bob');
+insert into employees (id, name) values ('11', 'meir');
+insert into employees (id, name) values ('90', 'winston');
+insert into employees (id, name) values ('3', 'jonathan');
+
+truncate table employeeuni;
+
+insert into employeeuni (id, unique_id) values ('3', '1');
+insert into employeeuni (id, unique_id) values ('11', '2');
+insert into employeeuni (id, unique_id) values ('90', '3');

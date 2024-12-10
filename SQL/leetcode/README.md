@@ -319,6 +319,10 @@ insert into tweets (tweet_id, content) values ('1', 'let us code');
 insert into tweets (tweet_id, content) values ('2', 'more than fifteen chars are here!');
 ```
 
+## Basic Joins
+
+An introduction to **Join** in SQL
+
 ### 01378. Replace Employee ID With The Unique Identifier
 
 #### Statement
@@ -414,10 +418,6 @@ insert into employeeuni (id, unique_id) values ('3', '1');
 insert into employeeuni (id, unique_id) values ('11', '2');
 insert into employeeuni (id, unique_id) values ('90', '3');
 ```
-
-## Basic Joins
-
-An introduction to **Join** in SQL
 
 ## Basic Aggregate Functions
 
