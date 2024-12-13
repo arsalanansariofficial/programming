@@ -24,3 +24,13 @@ insert into customer (id, name, referee_id) values ('3', 'alex', '2');
 insert into customer (id, name, referee_id) values ('4', 'bill', null);
 insert into customer (id, name, referee_id) values ('5', 'zack', '1');
 insert into customer (id, name, referee_id) values ('6', 'mark', '2');
+
+create table if not exists world (name varchar(255), continent varchar(255), area int, population int, gdp bigint);
+
+truncate table world;
+
+insert into world (name, continent, area, population, gdp) values ('afghanistan', 'asia', '652230', '25500100', '20343000000');
+insert into world (name, continent, area, population, gdp) values ('albania', 'europe', '28748', '2831741', '12960000000');
+insert into world (name, continent, area, population, gdp) values ('algeria', 'africa', '2381741', '37100000', '188681000000');
+insert into world (name, continent, area, population, gdp) values ('andorra', 'europe', '468', '78115', '3712000000');
+insert into world (name, continent, area, population, gdp) values ('angola', 'africa', '1246700', '20609294', '100990000000');

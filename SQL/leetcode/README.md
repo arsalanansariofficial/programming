@@ -133,6 +133,70 @@ insert into customer (id, name, referee_id) values ('5', 'zack', '1');
 insert into customer (id, name, referee_id) values ('6', 'mark', '2');
 ```
 
+### 00595. Big Countries
+
+#### Statement
+
+```sql
+Table: World
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| name        | varchar |
+| continent   | varchar |
+| area        | int     |
+| population  | int     |
+| gdp         | bigint  |
++-------------+---------+
+
+name is the primary key (column with unique values) for this table.
+
+Each row of this table gives information about the name of a country, the continent to which it belongs, its area, the population, and its GDP value.
+
+A country is big if:
+
+it has an area of at least three million (i.e., 3000000 km2), or it has a population of at least twenty-five million (i.e., 25000000).
+
+Write a solution to find the name, population, and area of the big countries.
+
+Input:
+World table:
++-------------+-----------+---------+------------+--------------+
+| name        | continent | area    | population | gdp          |
++-------------+-----------+---------+------------+--------------+
+| Afghanistan | Asia      | 652230  | 25500100   | 20343000000  |
+| Albania     | Europe    | 28748   | 2831741    | 12960000000  |
+| Algeria     | Africa    | 2381741 | 37100000   | 188681000000 |
+| Andorra     | Europe    | 468     | 78115      | 3712000000   |
+| Angola      | Africa    | 1246700 | 20609294   | 100990000000 |
++-------------+-----------+---------+------------+--------------+
+
+Output:
++-------------+------------+---------+
+| name        | population | area    |
++-------------+------------+---------+
+| Afghanistan | 25500100   | 652230  |
+| Algeria     | 37100000   | 2381741 |
++-------------+------------+---------+
+```
+
+#### Schema
+
+```sql
+drop database sql_50;
+
+create table if not exists world (name varchar(255), continent varchar(255), area int, population int, gdp bigint);
+
+truncate table world;
+
+insert into world (name, continent, area, population, gdp) values ('afghanistan', 'asia', '652230', '25500100', '20343000000');
+insert into world (name, continent, area, population, gdp) values ('albania', 'europe', '28748', '2831741', '12960000000');
+insert into world (name, continent, area, population, gdp) values ('algeria', 'africa', '2381741', '37100000', '188681000000');
+insert into world (name, continent, area, population, gdp) values ('andorra', 'europe', '468', '78115', '3712000000');
+insert into world (name, continent, area, population, gdp) values ('angola', 'africa', '1246700', '20609294', '100990000000');
+```
+
 ## Basic Joins
 
 An introduction to **Join** in SQL
