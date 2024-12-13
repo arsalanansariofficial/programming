@@ -70,3 +70,23 @@ truncate table employeeuni;
 insert into employeeuni (id, unique_id) values ('3', '1');
 insert into employeeuni (id, unique_id) values ('11', '2');
 insert into employeeuni (id, unique_id) values ('90', '3');
+
+create table if not exists sales (sale_id int, product_id int, year int, quantity int, price int);
+
+create table if not exists product (product_id int, product_name varchar(10));
+
+truncate table sales;
+
+insert into sales (sale_id, product_id, year, quantity, price) values ('1', '100', '2008', '10', '5000');
+
+insert into sales (sale_id, product_id, year, quantity, price) values ('2', '100', '2009', '12', '5000');
+
+insert into sales (sale_id, product_id, year, quantity, price) values ('7', '200', '2011', '15', '9000');
+
+truncate table product;
+
+insert into product (product_id, product_name) values ('100', 'nokia');
+
+insert into product (product_id, product_name) values ('200', 'apple');
+
+insert into product (product_id, product_name) values ('300', 'samsung');
