@@ -632,6 +632,70 @@ insert into transactions (transaction_id, visit_id, amount) values ('12', '1', '
 insert into transactions (transaction_id, visit_id, amount) values ('13', '2', '970');
 ```
 
+### 00197. Rising Temperature
+
+#### Statement
+
+```sql
+Table: Weather
+
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| id            | int     |
+| recordDate    | date    |
+| temperature   | int     |
++---------------+---------+
+
+id is the column with unique values for this table.
+
+There are no different rows with the same recordDate.
+
+This table contains information about the temperature on a certain day.
+
+Write a solution to find all dates id with higher temperatures compared to its previous dates (yesterday).
+
+Input:
+Weather table:
++----+------------+-------------+
+| id | recordDate | temperature |
++----+------------+-------------+
+| 1  | 2015-01-01 | 10          |
+| 2  | 2015-01-02 | 25          |
+| 3  | 2015-01-03 | 20          |
+| 4  | 2015-01-04 | 30          |
++----+------------+-------------+
+
+Output:
++----+
+| id |
++----+
+| 2  |
+| 4  |
++----+
+
+Explanation:
+
+In 2015-01-02, the temperature was higher than the previous day (10 -> 25).
+
+In 2015-01-04, the temperature was higher than the previous day (20 -> 30).
+```
+
+#### Schema
+
+```sql
+drop database sql_50;
+
+create table if not exists weather (id int, recorddate date, temperature int);
+
+truncate table weather;
+
+insert into weather (id, recorddate, temperature) values ('1', '2015-01-01', '10');
+insert into weather (id, recorddate, temperature) values ('2', '2015-01-02', '25');
+insert into weather (id, recorddate, temperature) values ('3', '2015-01-03', '20');
+insert into weather (id, recorddate, temperature) values ('4', '2015-01-04', '30');
+```
+
 ## Basic Aggregate Functions
 
 An introduction to **Aggregate Functions** in SQL
