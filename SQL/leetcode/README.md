@@ -1036,6 +1036,70 @@ insert into examinations (student_id, subject_name) values ('2', 'math');
 insert into examinations (student_id, subject_name) values ('1', 'math');
 ```
 
+### 00570. Managers with atleast 5 direct Reports
+
+#### Statement
+
+```sql
+Table: Employee
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| name        | varchar |
+| department  | varchar |
+| managerId   | int     |
++-------------+---------+
+
+id is the primary key (column with unique values) for this table.
+
+Each row of this table indicates the name of an employee, their department, and the id of their manager.
+
+If managerId is null, then the employee does not have a manager.
+
+No employee will be the manager of themself.
+
+Write a solution to find managers with at least five direct reports.
+
+Input:
+Employee table:
++-----+-------+------------+-----------+
+| id  | name  | department | managerId |
++-----+-------+------------+-----------+
+| 101 | John  | A          | null      |
+| 102 | Dan   | A          | 101       |
+| 103 | James | A          | 101       |
+| 104 | Amy   | A          | 101       |
+| 105 | Anne  | A          | 101       |
+| 106 | Ron   | B          | 101       |
++-----+-------+------------+-----------+
+
+Output:
++------+
+| name |
++------+
+| John |
++------+
+```
+
+#### Schema
+
+```sql
+drop database sql_50;
+
+create table if not exists employee (id int, name varchar(255), department varchar(255), managerid int);
+
+truncate table employee;
+
+insert into employee (id, name, department, managerid) values ('101', 'john', 'a', null);
+insert into employee (id, name, department, managerid) values ('102', 'dan', 'a', '101');
+insert into employee (id, name, department, managerid) values ('103', 'james', 'a', '101');
+insert into employee (id, name, department, managerid) values ('104', 'amy', 'a', '101');
+insert into employee (id, name, department, managerid) values ('105', 'anne', 'a', '101');
+insert into employee (id, name, department, managerid) values ('106', 'ron', 'b', '101');
+```
+
 ## Basic Aggregate Functions
 
 An introduction to **Aggregate Functions** in SQL

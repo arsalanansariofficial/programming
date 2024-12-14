@@ -184,3 +184,14 @@ insert into examinations (student_id, subject_name) values ('13', 'programming')
 insert into examinations (student_id, subject_name) values ('13', 'physics');
 insert into examinations (student_id, subject_name) values ('2', 'math');
 insert into examinations (student_id, subject_name) values ('1', 'math');
+
+create table if not exists employee (id int, name varchar(255), department varchar(255), managerid int);
+
+truncate table employee;
+
+insert into employee (id, name, department, managerid) values ('101', 'john', 'a', null);
+insert into employee (id, name, department, managerid) values ('102', 'dan', 'a', '101');
+insert into employee (id, name, department, managerid) values ('103', 'james', 'a', '101');
+insert into employee (id, name, department, managerid) values ('104', 'amy', 'a', '101');
+insert into employee (id, name, department, managerid) values ('105', 'anne', 'a', '101');
+insert into employee (id, name, department, managerid) values ('106', 'ron', 'b', '101');
