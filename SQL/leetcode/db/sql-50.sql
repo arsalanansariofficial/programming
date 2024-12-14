@@ -215,3 +215,20 @@ insert into confirmations (user_id, time_stamp, action) values ('7', '2021-06-13
 insert into confirmations (user_id, time_stamp, action) values ('7', '2021-06-14 13:59:27', 'confirmed');
 insert into confirmations (user_id, time_stamp, action) values ('2', '2021-01-22 00:00:00', 'confirmed');
 insert into confirmations (user_id, time_stamp, action) values ('2', '2021-02-28 23:59:59', 'timeout');
+
+create table if not exists prices (product_id int, start_date date, end_date date, price int);
+create table if not exists unitssold (product_id int, purchase_date date, units int);
+
+truncate table prices;
+
+insert into prices (product_id, start_date, end_date, price) values ('1', '2019-02-17', '2019-02-28', '5');
+insert into prices (product_id, start_date, end_date, price) values ('1', '2019-03-01', '2019-03-22', '20');
+insert into prices (product_id, start_date, end_date, price) values ('2', '2019-02-01', '2019-02-20', '15');
+insert into prices (product_id, start_date, end_date, price) values ('2', '2019-02-21', '2019-03-31', '30');
+
+truncate table unitssold;
+
+insert into unitssold (product_id, purchase_date, units) values ('1', '2019-02-25', '100');
+insert into unitssold (product_id, purchase_date, units) values ('1', '2019-03-01', '15');
+insert into unitssold (product_id, purchase_date, units) values ('2', '2019-02-10', '200');
+insert into unitssold (product_id, purchase_date, units) values ('2', '2019-03-22', '30');
