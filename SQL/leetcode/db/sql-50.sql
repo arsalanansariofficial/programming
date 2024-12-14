@@ -90,3 +90,25 @@ insert into product (product_id, product_name) values ('100', 'nokia');
 insert into product (product_id, product_name) values ('200', 'apple');
 
 insert into product (product_id, product_name) values ('300', 'samsung');
+
+create table if not exists visits(visit_id int, customer_id int);
+
+create table if not exists transactions(transaction_id int, visit_id int, amount int);
+
+truncate table visits;
+
+insert into visits (visit_id, customer_id) values ('1', '23');
+insert into visits (visit_id, customer_id) values ('2', '9');
+insert into visits (visit_id, customer_id) values ('4', '30');
+insert into visits (visit_id, customer_id) values ('5', '54');
+insert into visits (visit_id, customer_id) values ('6', '96');
+insert into visits (visit_id, customer_id) values ('7', '54');
+insert into visits (visit_id, customer_id) values ('8', '54');
+
+truncate table transactions;
+
+insert into transactions (transaction_id, visit_id, amount) values ('2', '5', '310');
+insert into transactions (transaction_id, visit_id, amount) values ('3', '5', '300');
+insert into transactions (transaction_id, visit_id, amount) values ('9', '5', '200');
+insert into transactions (transaction_id, visit_id, amount) values ('12', '1', '910');
+insert into transactions (transaction_id, visit_id, amount) values ('13', '2', '970');
