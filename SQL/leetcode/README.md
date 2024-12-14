@@ -797,6 +797,93 @@ insert into activity (machine_id, process_id, activity_type, timestamp) values (
 insert into activity (machine_id, process_id, activity_type, timestamp) values ('2', '1', 'end', '5');
 ```
 
+### 00577. Employee Bonus
+
+#### Statement
+
+```sql
+Table: Employee
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| empId       | int     |
+| name        | varchar |
+| supervisor  | int     |
+| salary      | int     |
++-------------+---------+
+
+empId is the column with unique values for this table.
+
+Each row of this table indicates the name and the ID of an employee in addition to their salary and the id of their manager.
+
+Table: Bonus
+
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| empId       | int  |
+| bonus       | int  |
++-------------+------+
+
+empId is the column of unique values for this table.
+
+empId is a foreign key (reference column) to empId from the Employee table.
+
+Each row of this table contains the id of an employee and their respective bonus.
+
+Write a solution to report the name and bonus amount of each employee with a bonus less than 1000.
+
+Input:
+Employee table:
++-------+--------+------------+--------+
+| empId | name   | supervisor | salary |
++-------+--------+------------+--------+
+| 3     | Brad   | null       | 4000   |
+| 1     | John   | 3          | 1000   |
+| 2     | Dan    | 3          | 2000   |
+| 4     | Thomas | 3          | 4000   |
++-------+--------+------------+--------+
+
+Bonus table:
++-------+-------+
+| empId | bonus |
++-------+-------+
+| 2     | 500   |
+| 4     | 2000  |
++-------+-------+
+
+Output:
++------+-------+
+| name | bonus |
++------+-------+
+| Brad | null  |
+| John | null  |
+| Dan  | 500   |
++------+-------+
+```
+
+#### Schema
+
+```sql
+drop database sql_50;
+
+create table if not exists employee (empid int, name varchar(255), supervisor int, salary int);
+create table if not exists bonus (empid int, bonus int);
+
+truncate table employee;
+
+insert into employee (empid, name, supervisor, salary) values ('3', 'brad', null, '4000');
+insert into employee (empid, name, supervisor, salary) values ('1', 'john', '3', '1000');
+insert into employee (empid, name, supervisor, salary) values ('2', 'dan', '3', '2000');
+insert into employee (empid, name, supervisor, salary) values ('4', 'thomas', '3', '4000');
+
+truncate table bonus;
+
+insert into bonus (empid, bonus) values ('2', '500');
+insert into bonus (empid, bonus) values ('4', '2000');
+```
+
 ## Basic Aggregate Functions
 
 An introduction to **Aggregate Functions** in SQL

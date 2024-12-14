@@ -138,3 +138,18 @@ insert into activity (machine_id, process_id, activity_type, timestamp) values (
 insert into activity (machine_id, process_id, activity_type, timestamp) values ('2', '0', 'end', '4.512');
 insert into activity (machine_id, process_id, activity_type, timestamp) values ('2', '1', 'start', '2.5');
 insert into activity (machine_id, process_id, activity_type, timestamp) values ('2', '1', 'end', '5');
+
+create table if not exists employee (empid int, name varchar(255), supervisor int, salary int);
+create table if not exists bonus (empid int, bonus int);
+
+truncate table employee;
+
+insert into employee (empid, name, supervisor, salary) values ('3', 'brad', null, '4000');
+insert into employee (empid, name, supervisor, salary) values ('1', 'john', '3', '1000');
+insert into employee (empid, name, supervisor, salary) values ('2', 'dan', '3', '2000');
+insert into employee (empid, name, supervisor, salary) values ('4', 'thomas', '3', '4000');
+
+truncate table bonus;
+
+insert into bonus (empid, bonus) values ('2', '500');
+insert into bonus (empid, bonus) values ('4', '2000');
