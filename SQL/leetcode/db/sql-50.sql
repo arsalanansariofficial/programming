@@ -153,3 +153,34 @@ truncate table bonus;
 
 insert into bonus (empid, bonus) values ('2', '500');
 insert into bonus (empid, bonus) values ('4', '2000');
+
+create table if not exists students (student_id int, student_name varchar(20));
+create table if not exists subjects (subject_name varchar(20));
+create table if not exists examinations (student_id int, subject_name varchar(20));
+
+truncate table students;
+
+insert into students (student_id, student_name) values ('1', 'alice');
+insert into students (student_id, student_name) values ('2', 'bob');
+insert into students (student_id, student_name) values ('13', 'john');
+insert into students (student_id, student_name) values ('6', 'alex');
+
+truncate table subjects;
+
+insert into subjects (subject_name) values ('math');
+insert into subjects (subject_name) values ('physics');
+insert into subjects (subject_name) values ('programming');
+
+truncate table examinations;
+
+insert into examinations (student_id, subject_name) values ('1', 'math');
+insert into examinations (student_id, subject_name) values ('1', 'physics');
+insert into examinations (student_id, subject_name) values ('1', 'programming');
+insert into examinations (student_id, subject_name) values ('2', 'programming');
+insert into examinations (student_id, subject_name) values ('1', 'physics');
+insert into examinations (student_id, subject_name) values ('1', 'math');
+insert into examinations (student_id, subject_name) values ('13', 'math');
+insert into examinations (student_id, subject_name) values ('13', 'programming');
+insert into examinations (student_id, subject_name) values ('13', 'physics');
+insert into examinations (student_id, subject_name) values ('2', 'math');
+insert into examinations (student_id, subject_name) values ('1', 'math');
