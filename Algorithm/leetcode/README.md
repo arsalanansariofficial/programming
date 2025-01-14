@@ -9,9 +9,18 @@ This repository contains solutions to various **Algorithms**.
 00001111; // 15 odd
 ```
 
+### Shifting 1 bit to the left will double the number
+
+```javascript
+30 << 1;
+00011110; // 30
+00111100; // 15 After shifting 1 bit to the left
+```
+
 ### Shifting 1 bit to the right will divide the number into half
 
 ```javascript
+30 >> 1;
 00011110; // 30
 00001111; // 15 After shifting 1 bit to the right
 ```
