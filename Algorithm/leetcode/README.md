@@ -13,8 +13,8 @@ This repository contains solutions to various **Algorithms**.
 
 ```javascript
 30 << 1;
-00011110; // 30
-00111100; // 15 After shifting 1 bit to the left
+00001111; // 15
+00011110; // 30 After shifting 1 bit to the left
 ```
 
 ### Shifting 1 bit to the right will divide the number into half
