@@ -232,3 +232,21 @@ insert into unitssold (product_id, purchase_date, units) values ('1', '2019-02-2
 insert into unitssold (product_id, purchase_date, units) values ('1', '2019-03-01', '15');
 insert into unitssold (product_id, purchase_date, units) values ('2', '2019-02-10', '200');
 insert into unitssold (product_id, purchase_date, units) values ('2', '2019-03-22', '30');
+
+create table if not exists project (project_id int, empid int);
+create table if not exists employee (empid int, name varchar(255), supervisor int, salary int, experience_years int);
+
+truncate table project;
+
+insert into project (project_id, empid) values ('1', '1');
+insert into project (project_id, empid) values ('1', '2');
+insert into project (project_id, empid) values ('1', '3');
+insert into project (project_id, empid) values ('2', '1');
+insert into project (project_id, empid) values ('2', '4');
+
+truncate table employee;
+
+insert into employee (empid, name, experience_years) values ('2', 'ali', '2');
+insert into employee (empid, name, experience_years) values ('4', 'doe', '2');
+insert into employee (empid, name, experience_years) values ('3', 'john', '1');
+insert into employee (empid, name, experience_years) values ('1', 'khaled', '3');
