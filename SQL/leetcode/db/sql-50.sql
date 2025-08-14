@@ -250,3 +250,27 @@ insert into employee (empid, name, experience_years) values ('2', 'ali', '2');
 insert into employee (empid, name, experience_years) values ('4', 'doe', '2');
 insert into employee (empid, name, experience_years) values ('3', 'john', '1');
 insert into employee (empid, name, experience_years) values ('1', 'khaled', '3');
+
+create table if not exists register (contest_id int, user_id int);
+create table if not exists users (user_id int, user_name varchar(20));
+
+truncate table users;
+
+insert into users (user_id, user_name) values ('2', 'bob');
+insert into users (user_id, user_name) values ('7', 'alex');
+insert into users (user_id, user_name) values ('6', 'alice');
+
+truncate table register;
+
+insert into register (contest_id, user_id) values ('215', '6');
+insert into register (contest_id, user_id) values ('209', '2');
+insert into register (contest_id, user_id) values ('208', '2');
+insert into register (contest_id, user_id) values ('210', '6');
+insert into register (contest_id, user_id) values ('208', '6');
+insert into register (contest_id, user_id) values ('209', '7');
+insert into register (contest_id, user_id) values ('209', '6');
+insert into register (contest_id, user_id) values ('215', '7');
+insert into register (contest_id, user_id) values ('208', '7');
+insert into register (contest_id, user_id) values ('210', '2');
+insert into register (contest_id, user_id) values ('207', '2');
+insert into register (contest_id, user_id) values ('210', '7');

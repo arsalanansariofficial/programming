@@ -1418,6 +1418,130 @@ insert into employee (empid, name, experience_years) values ('3', 'john', '1');
 insert into employee (empid, name, experience_years) values ('1', 'khaled', '3');
 ```
 
+### 1633. Percentage of users attended a contest
+
+#### Statement
+
+```sql
+Table: Users
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| user_id     | int     |
+| user_name   | varchar |
++-------------+---------+
+
+user_id is the primary key (column with unique values) for this table.
+
+Each row of this table contains the name and the id of a user.
+
+
+Table: Register
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| contest_id  | int     |
+| user_id     | int     |
++-------------+---------+
+
+(contest_id, user_id) is the primary key (combination of columns with unique values) for this table.
+
+Each row of this table contains the id of a user and the contest they registered into.
+
+Write a solution to find the percentage of the users registered in each contest rounded to two decimals.
+
+Return the result table ordered by percentage in descending order. In case of a tie, order it by contest_id in ascending order.
+
+The result format is in the following example.
+
+Return the result table ordered by percentage in descending order. In case of a tie, order it by contest_id in ascending order.
+
+The result format is in the following example.
+
+Example:
+
+Input:
+
+Users table:
++---------+-----------+
+| user_id | user_name |
++---------+-----------+
+| 6       | Alice     |
+| 2       | Bob       |
+| 7       | Alex      |
++---------+-----------+
+
+Register table:
++------------+---------+
+| contest_id | user_id |
++------------+---------+
+| 215        | 6       |
+| 209        | 2       |
+| 208        | 2       |
+| 210        | 6       |
+| 208        | 6       |
+| 209        | 7       |
+| 209        | 6       |
+| 215        | 7       |
+| 208        | 7       |
+| 210        | 2       |
+| 207        | 2       |
+| 210        | 7       |
++------------+---------+
+
+Output:
++------------+------------+
+| contest_id | percentage |
++------------+------------+
+| 208        | 100.0      |
+| 209        | 100.0      |
+| 210        | 100.0      |
+| 215        | 66.67      |
+| 207        | 33.33      |
++------------+------------+
+
+Explanation:
+
+All the users registered in contests 208, 209, and 210. The percentage is 100% and we sort them in the answer table by contest_id in ascending order.
+
+Alice and Alex registered in contest 215 and the percentage is ((2/3) * 100) = 66.67%
+
+Bob registered in contest 207 and the percentage is ((1/3) * 100) = 33.33%
+
+```
+
+#### Schema
+
+```sql
+drop database if exists sql_50;
+
+create table if not exists register (contest_id int, user_id int);
+create table if not exists users (user_id int, user_name varchar(20));
+
+truncate table users;
+
+insert into users (user_id, user_name) values ('2', 'bob');
+insert into users (user_id, user_name) values ('7', 'alex');
+insert into users (user_id, user_name) values ('6', 'alice');
+
+truncate table register;
+
+insert into register (contest_id, user_id) values ('215', '6');
+insert into register (contest_id, user_id) values ('209', '2');
+insert into register (contest_id, user_id) values ('208', '2');
+insert into register (contest_id, user_id) values ('210', '6');
+insert into register (contest_id, user_id) values ('208', '6');
+insert into register (contest_id, user_id) values ('209', '7');
+insert into register (contest_id, user_id) values ('209', '6');
+insert into register (contest_id, user_id) values ('215', '7');
+insert into register (contest_id, user_id) values ('208', '7');
+insert into register (contest_id, user_id) values ('210', '2');
+insert into register (contest_id, user_id) values ('207', '2');
+insert into register (contest_id, user_id) values ('210', '7');
+```
+
 ## Sorting and Grouping
 
 SQL queries to arrange rows based on a single or multiple columns
