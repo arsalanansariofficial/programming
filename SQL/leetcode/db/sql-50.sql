@@ -274,3 +274,14 @@ insert into register (contest_id, user_id) values ('208', '7');
 insert into register (contest_id, user_id) values ('210', '2');
 insert into register (contest_id, user_id) values ('207', '2');
 insert into register (contest_id, user_id) values ('210', '7');
+
+create table if not exists queries (query_name varchar(30), result varchar(50), position int, rating int);
+
+truncate table queries;
+
+insert into queries (query_name, result, position, rating) values ('dog', 'mule', '200', '1');
+insert into queries (query_name, result, position, rating) values ('cat', 'sphynx', '7', '4');
+insert into queries (query_name, result, position, rating) values ('cat', 'shirazi', '5', '2');
+insert into queries (query_name, result, position, rating) values ('cat', 'siamese', '3', '3');
+insert into queries (query_name, result, position, rating) values ('dog', 'german shepherd', '2', '5');
+insert into queries (query_name, result, position, rating) values ('dog', 'golden retriever', '1', '5');
