@@ -285,3 +285,12 @@ insert into queries (query_name, result, position, rating) values ('cat', 'shira
 insert into queries (query_name, result, position, rating) values ('cat', 'siamese', '3', '3');
 insert into queries (query_name, result, position, rating) values ('dog', 'german shepherd', '2', '5');
 insert into queries (query_name, result, position, rating) values ('dog', 'golden retriever', '1', '5');
+
+create table if not exists transactions (id int, country varchar(4), state enum('approved', 'declined'), amount int, trans_date date);
+
+truncate table transactions;
+
+insert into transactions (id, country, state, amount, trans_date) values ('121', 'us', 'approved', '1000', '2018-12-18');
+insert into transactions (id, country, state, amount, trans_date) values ('122', 'us', 'declined', '2000', '2018-12-19');
+insert into transactions (id, country, state, amount, trans_date) values ('123', 'us', 'approved', '2000', '2019-01-01');
+insert into transactions (id, country, state, amount, trans_date) values ('124', 'de', 'approved', '2000', '2019-01-07');
