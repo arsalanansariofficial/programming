@@ -294,3 +294,15 @@ insert into transactions (id, country, state, amount, trans_date) values ('121',
 insert into transactions (id, country, state, amount, trans_date) values ('122', 'us', 'declined', '2000', '2018-12-19');
 insert into transactions (id, country, state, amount, trans_date) values ('123', 'us', 'approved', '2000', '2019-01-01');
 insert into transactions (id, country, state, amount, trans_date) values ('124', 'de', 'approved', '2000', '2019-01-07');
+
+create table if not exists delivery (delivery_id int, customer_id int, order_date date, customer_pref_delivery_date date);
+
+truncate table delivery;
+
+insert into delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('1', '1', '2019-08-01', '2019-08-02');
+insert into delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('2', '2', '2019-08-02', '2019-08-02');
+insert into delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('3', '1', '2019-08-11', '2019-08-12');
+insert into delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('4', '3', '2019-08-24', '2019-08-24');
+insert into delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('5', '3', '2019-08-21', '2019-08-22');
+insert into delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('6', '2', '2019-08-11', '2019-08-13');
+insert into delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('7', '4', '2019-08-09', '2019-08-09');
