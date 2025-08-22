@@ -1702,29 +1702,29 @@ insert into transactions (id, country, state, amount, trans_date) values ('124',
 
 ### 1174. Immediate Food Delivery 2
 
+### 0550. Game Play Analysis 4
+
 #### Statement
 
 ```sql
-Table: Delivery
+Table: Activity
 
-+-----------------------------+---------+
-| Column Name                 | Type    |
-+-----------------------------+---------+
-| delivery_id                 | int     |
-| customer_id                 | int     |
-| order_date                  | date    |
-| customer_pref_delivery_date | date    |
-+-----------------------------+---------+
++--------------+---------+
+| Column Name  | Type    |
++--------------+---------+
+| player_id    | int     |
+| device_id    | int     |
+| event_date   | date    |
+| games_played | int     |
++--------------+---------+
 
-delivery_id is the column of unique values of this table.
+(player_id, event_date) is the primary key (combination of columns with unique values) of this table.
 
-The table holds information about food delivery to customers that make orders at some date and specify a preferred delivery date (on the same order date or after it).
+This table shows the activity of players of some games.
 
-If the customers preferred delivery date is the same as the order date, then the order is called immediate; otherwise, it is called scheduled.
+Each row is a record of a player who logged in and played a number of games (possibly 0) before logging out on someday using some device.
 
-The first order of a customer is the order with the earliest order date that the customer made. It is guaranteed that a customer has precisely one first order.
-
-Write a solution to find the percentage of immediate orders in the first orders of all customers, rounded to 2 decimal places.
+Write a solution to report the fraction of players that logged in again on the day after the day they first logged in, rounded to 2 decimal places. In other words, you need to determine the number of players who logged in on the day immediately following their initial login, and divide it by the number of total players.
 
 The result format is in the following example.
 
@@ -1732,37 +1732,27 @@ Example 1:
 
 Input:
 
-Delivery table:
-+-------------+-------------+------------+-----------------------------+
-| delivery_id | customer_id | order_date | customer_pref_delivery_date |
-+-------------+-------------+------------+-----------------------------+
-| 1           | 1           | 2019-08-01 | 2019-08-02                  |
-| 2           | 2           | 2019-08-02 | 2019-08-02                  |
-| 3           | 1           | 2019-08-11 | 2019-08-12                  |
-| 4           | 3           | 2019-08-24 | 2019-08-24                  |
-| 5           | 3           | 2019-08-21 | 2019-08-22                  |
-| 6           | 2           | 2019-08-11 | 2019-08-13                  |
-| 7           | 4           | 2019-08-09 | 2019-08-09                  |
-+-------------+-------------+------------+-----------------------------+
+Activity table:
+
++-----------+-----------+------------+--------------+
+| player_id | device_id | event_date | games_played |
++-----------+-----------+------------+--------------+
+| 1         | 2         | 2016-03-01 | 5            |
+| 1         | 2         | 2016-03-02 | 6            |
+| 2         | 3         | 2017-06-25 | 1            |
+| 3         | 1         | 2016-03-02 | 0            |
+| 3         | 4         | 2018-07-03 | 5            |
++-----------+-----------+------------+--------------+
 
 Output:
-+----------------------+
-| immediate_percentage |
-+----------------------+
-| 50.00                |
-+----------------------+
++-----------+
+| fraction  |
++-----------+
+| 0.33      |
++-----------+
 
 Explanation:
-
-The customer id 1 has a first order with delivery id 1 and it is scheduled.
-
-The customer id 2 has a first order with delivery id 2 and it is immediate.
-
-The customer id 3 has a first order with delivery id 5 and it is scheduled.
-
-The customer id 4 has a first order with delivery id 7 and it is immediate.
-
-Hence, half the customers have immediate first orders.
+Only the player with id 1 logged back in after the first day he had logged in so the answer is 1/3 = 0.33
 ```
 
 #### Schema
@@ -1770,17 +1760,15 @@ Hence, half the customers have immediate first orders.
 ```sql
 drop database if exists sql_50;
 
-create table if not exists delivery (delivery_id int, customer_id int, order_date date, customer_pref_delivery_date date);
+create table if not exists activity (player_id int, device_id int, event_date date, games_played int);
 
-truncate table delivery;
+truncate table activity;
 
-insert into delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('1', '1', '2019-08-01', '2019-08-02');
-insert into delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('2', '2', '2019-08-02', '2019-08-02');
-insert into delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('3', '1', '2019-08-11', '2019-08-12');
-insert into delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('4', '3', '2019-08-24', '2019-08-24');
-insert into delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('5', '3', '2019-08-21', '2019-08-22');
-insert into delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('6', '2', '2019-08-11', '2019-08-13');
-insert into delivery (delivery_id, customer_id, order_date, customer_pref_delivery_date) values ('7', '4', '2019-08-09', '2019-08-09');
+insert into activity (player_id, device_id, event_date, games_played) values ('1', '2', '2016-03-01', '5');
+insert into activity (player_id, device_id, event_date, games_played) values ('1', '2', '2016-03-02', '6');
+insert into activity (player_id, device_id, event_date, games_played) values ('2', '3', '2017-06-25', '1');
+insert into activity (player_id, device_id, event_date, games_played) values ('3', '1', '2016-03-02', '0');
+insert into activity (player_id, device_id, event_date, games_played) values ('3', '4', '2018-07-03', '5');
 ```
 
 ## Sorting and Grouping
