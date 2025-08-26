@@ -344,3 +344,11 @@ insert into activity (user_id, session_id, activity_date, activity_type) values 
 insert into activity (user_id, session_id, activity_date, activity_type) values ('3', '2', '2019-07-21', 'open_session');
 insert into activity (user_id, session_id, activity_date, activity_type) values ('3', '2', '2019-07-21', 'send_message');
 insert into activity (user_id, session_id, activity_date, activity_type) values ('4', '3', '2019-06-25', 'open_session');
+
+create table if not exists sales (sale_id int, product_id int, year int, quantity int, price int);
+
+truncate table sales;
+
+insert into sales (sale_id, product_id, year, quantity, price) values ('1', '100', '2008', '10', '5000');
+insert into sales (sale_id, product_id, year, quantity, price) values ('2', '100', '2009', '12', '5000');
+insert into sales (sale_id, product_id, year, quantity, price) values ('7', '200', '2011', '15', '9000');
