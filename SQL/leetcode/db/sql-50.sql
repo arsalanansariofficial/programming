@@ -352,3 +352,17 @@ truncate table sales;
 insert into sales (sale_id, product_id, year, quantity, price) values ('1', '100', '2008', '10', '5000');
 insert into sales (sale_id, product_id, year, quantity, price) values ('2', '100', '2009', '12', '5000');
 insert into sales (sale_id, product_id, year, quantity, price) values ('7', '200', '2011', '15', '9000');
+
+create table if not exists courses (student varchar(255), class varchar(255));
+
+truncate table courses;
+
+insert into courses (student, class) values ('a', 'math');
+insert into courses (student, class) values ('c', 'math');
+insert into courses (student, class) values ('e', 'math');
+insert into courses (student, class) values ('g', 'math');
+insert into courses (student, class) values ('h', 'math');
+insert into courses (student, class) values ('i', 'math');
+insert into courses (student, class) values ('b', 'english');
+insert into courses (student, class) values ('d', 'biology');
+insert into courses (student, class) values ('f', 'computer');
