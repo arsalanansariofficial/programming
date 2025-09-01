@@ -366,3 +366,12 @@ insert into courses (student, class) values ('i', 'math');
 insert into courses (student, class) values ('b', 'english');
 insert into courses (student, class) values ('d', 'biology');
 insert into courses (student, class) values ('f', 'computer');
+
+create table if not exists followers(user_id int, follower_id int)
+
+truncate table followers;
+
+insert into followers (user_id, follower_id) values ('0', '1');
+insert into followers (user_id, follower_id) values ('1', '0');
+insert into followers (user_id, follower_id) values ('2', '0');
+insert into followers (user_id, follower_id) values ('2', '1');

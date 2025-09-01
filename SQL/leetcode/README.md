@@ -2019,60 +2019,56 @@ insert into sales (sale_id, product_id, year, quantity, price) values ('7', '200
 
 ### 0596. Classes With Atleast 5 Students
 
+### 1729. Find Followers Count
+
 #### Statement
 
 ```sql
-Table: Courses
+Table: Followers
 
-+-------------+---------+
-| Column Name | Type    |
-+-------------+---------+
-| student     | varchar |
-| class       | varchar |
-+-------------+---------+
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| user_id     | int  |
+| follower_id | int  |
++-------------+------+
 
-(student, class) is the primary key (combination of columns with unique values) for this table.
+(user_id, follower_id) is the primary key (combination of columns with unique values) for this table.
 
-Each row of this table indicates the name of a student and the class in which they are enrolled.
+This table contains the IDs of a user and a follower in a social media app where the follower follows the user.
 
-Write a solution to find all the classes that have at least five students.
+Write a solution that will, for each user, return the number of followers.
 
-Return the result table in any order.
+Return the result table ordered by user_id in ascending order.
 
 The result format is in the following example.
 
 Example 1:
 
 Input:
-
-Courses table:
-+---------+----------+
-| student | class    |
-+---------+----------+
-| A       | Math     |
-| B       | English  |
-| C       | Math     |
-| D       | Biology  |
-| E       | Math     |
-| F       | Computer |
-| G       | Math     |
-| H       | Math     |
-| I       | Math     |
-+---------+----------+
+Followers table:
++---------+-------------+
+| user_id | follower_id |
++---------+-------------+
+| 0       | 1           |
+| 1       | 0           |
+| 2       | 0           |
+| 2       | 1           |
++---------+-------------+
 
 Output:
-+---------+
-| class   |
-+---------+
-| Math    |
-+---------+
++---------+----------------+
+| user_id | followers_count|
++---------+----------------+
+| 0       | 1              |
+| 1       | 1              |
+| 2       | 2              |
++---------+----------------+
 
 Explanation:
-
-- Math has 6 students, so we include it.
-- English has 1 student, so we do not include it.
-- Biology has 1 student, so we do not include it.
-- Computer has 1 student, so we do not include it.
+The followers of 0 are {1}
+The followers of 1 are {0}
+The followers of 2 are {0,1}
 ```
 
 #### Schema
@@ -2080,19 +2076,14 @@ Explanation:
 ```sql
 drop database if exists sql_50;
 
-create table if not exists courses (student varchar(255), class varchar(255));
+create table if not exists followers(user_id int, follower_id int)
 
-truncate table courses;
+truncate table followers;
 
-insert into courses (student, class) values ('a', 'math');
-insert into courses (student, class) values ('c', 'math');
-insert into courses (student, class) values ('e', 'math');
-insert into courses (student, class) values ('g', 'math');
-insert into courses (student, class) values ('h', 'math');
-insert into courses (student, class) values ('i', 'math');
-insert into courses (student, class) values ('b', 'english');
-insert into courses (student, class) values ('d', 'biology');
-insert into courses (student, class) values ('f', 'computer');
+insert into followers (user_id, follower_id) values ('0', '1');
+insert into followers (user_id, follower_id) values ('1', '0');
+insert into followers (user_id, follower_id) values ('2', '0');
+insert into followers (user_id, follower_id) values ('2', '1');
 ```
 
 ## Advanced Select and Joins
