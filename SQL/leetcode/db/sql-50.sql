@@ -375,3 +375,16 @@ insert into followers (user_id, follower_id) values ('0', '1');
 insert into followers (user_id, follower_id) values ('1', '0');
 insert into followers (user_id, follower_id) values ('2', '0');
 insert into followers (user_id, follower_id) values ('2', '1');
+
+create table if not exists mynumbers (num int);
+
+truncate table mynumbers;
+
+insert into mynumbers (num) values ('8');
+insert into mynumbers (num) values ('8');
+insert into mynumbers (num) values ('3');
+insert into mynumbers (num) values ('3');
+insert into mynumbers (num) values ('1');
+insert into mynumbers (num) values ('4');
+insert into mynumbers (num) values ('5');
+insert into mynumbers (num) values ('6');
