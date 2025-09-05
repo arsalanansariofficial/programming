@@ -388,3 +388,18 @@ insert into mynumbers (num) values ('1');
 insert into mynumbers (num) values ('4');
 insert into mynumbers (num) values ('5');
 insert into mynumbers (num) values ('6');
+
+create table product (product_key int);
+create table if not exists customer (customer_id int, product_key int);
+
+truncate table product;
+truncate table customer;
+
+insert into product (product_key) values ('5');
+insert into product (product_key) values ('6');
+
+insert into customer (customer_id, product_key) values ('1', '5');
+insert into customer (customer_id, product_key) values ('2', '6');
+insert into customer (customer_id, product_key) values ('3', '5');
+insert into customer (customer_id, product_key) values ('3', '6');
+insert into customer (customer_id, product_key) values ('1', '6');
