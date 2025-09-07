@@ -403,3 +403,12 @@ insert into customer (customer_id, product_key) values ('2', '6');
 insert into customer (customer_id, product_key) values ('3', '5');
 insert into customer (customer_id, product_key) values ('3', '6');
 insert into customer (customer_id, product_key) values ('1', '6');
+
+create table if not exists employees(employee_id int, name varchar(20), reports_to int, age int);
+
+truncate table employees
+
+insert into employees (employee_id, name, reports_to, age) values ('4', 'bob', '9', '36');
+insert into employees (employee_id, name, reports_to, age) values ('6', 'alice', '9', '41');
+insert into employees (employee_id, name, reports_to, age) values ('9', 'hercy', null, '43');
+insert into employees (employee_id, name, reports_to, age) values ('2', 'winston', null, '37');
