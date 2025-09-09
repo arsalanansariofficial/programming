@@ -412,3 +412,17 @@ insert into employees (employee_id, name, reports_to, age) values ('4', 'bob', '
 insert into employees (employee_id, name, reports_to, age) values ('6', 'alice', '9', '41');
 insert into employees (employee_id, name, reports_to, age) values ('9', 'hercy', null, '43');
 insert into employees (employee_id, name, reports_to, age) values ('2', 'winston', null, '37');
+
+drop table if exists employee;
+
+create table if not exists employee (employee_id int, department_id int, primary_flag enum('y','n'));
+
+truncate table employee;
+
+insert into employee (employee_id, department_id, primary_flag) values ('1', '1', 'n');
+insert into employee (employee_id, department_id, primary_flag) values ('2', '1', 'y');
+insert into employee (employee_id, department_id, primary_flag) values ('2', '2', 'n');
+insert into employee (employee_id, department_id, primary_flag) values ('3', '3', 'n');
+insert into employee (employee_id, department_id, primary_flag) values ('4', '2', 'n');
+insert into employee (employee_id, department_id, primary_flag) values ('4', '3', 'y');
+insert into employee (employee_id, department_id, primary_flag) values ('4', '4', 'n');
