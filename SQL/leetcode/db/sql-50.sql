@@ -426,3 +426,10 @@ insert into employee (employee_id, department_id, primary_flag) values ('3', '3'
 insert into employee (employee_id, department_id, primary_flag) values ('4', '2', 'n');
 insert into employee (employee_id, department_id, primary_flag) values ('4', '3', 'y');
 insert into employee (employee_id, department_id, primary_flag) values ('4', '4', 'n');
+
+create table if not exists triangle (x int, y int, z int);
+
+truncate table triangle;
+
+insert into triangle (x, y, z) values ('13', '15', '30');
+insert into triangle (x, y, z) values ('10', '20', '15');

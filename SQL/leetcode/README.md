@@ -2378,29 +2378,26 @@ insert into employees (employee_id, name, reports_to, age) values ('2', 'winston
 
 ### 1789. Primary Department Of Each Employee
 
+### 0610. Triangle Judgement
+
 #### Statement
 
 ```sql
-Table: Employee
+Table: Triangle
 
-+---------------+---------+
-| Column Name   |  Type   |
-+---------------+---------+
-| employee_id   | int     |
-| department_id | int     |
-| primary_flag  | varchar |
-+---------------+---------+
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| x           | int  |
+| y           | int  |
+| z           | int  |
++-------------+------+
 
-(employee_id, department_id) is the primary key (combination of columns with unique values) for this table.
-employee_id is the id of the employee.
+In SQL, (x, y, z) is the primary key column for this table.
 
-department_id is the id of the department to which the employee belongs.
+Each row of this table contains the lengths of three line segments.
 
-primary_flag is an ENUM (category) of type ('Y', 'N'). If the flag is 'Y', the department is the primary department for the employee. If the flag is 'N', the department is not the primary.
-
-Employees can belong to multiple departments. When the employee joins other departments, they need to decide which department is their primary department. Note that when an employee belongs to only one department, their primary column is 'N'.
-
-Write a solution to report all the employees with their primary department. For employees who belong to one department, report their only department.
+Report for every three line segments whether they can form a triangle.
 
 Return the result table in any order.
 
@@ -2409,36 +2406,22 @@ The result format is in the following example.
 Example 1:
 
 Input:
-Employee table:
+Triangle table:
 
-+-------------+---------------+--------------+
-| employee_id | department_id | primary_flag |
-+-------------+---------------+--------------+
-| 1           | 1             | N            |
-| 2           | 1             | Y            |
-| 2           | 2             | N            |
-| 3           | 3             | N            |
-| 4           | 2             | N            |
-| 4           | 3             | Y            |
-| 4           | 4             | N            |
-+-------------+---------------+--------------+
++----+----+----+
+| x  | y  | z  |
++----+----+----+
+| 13 | 15 | 30 |
+| 10 | 20 | 15 |
++----+----+----+
 
 Output:
-+-------------+---------------+
-| employee_id | department_id |
-+-------------+---------------+
-| 1           | 1             |
-| 2           | 1             |
-| 3           | 3             |
-| 4           | 3             |
-+-------------+---------------+
-
-Explanation:
-
-- The Primary department for employee 1 is 1.
-- The Primary department for employee 2 is 1.
-- The Primary department for employee 3 is 3.
-- The Primary department for employee 4 is 3.
++----+----+----+----------+
+| x  | y  | z  | triangle |
++----+----+----+----------+
+| 13 | 15 | 30 | No       |
+| 10 | 20 | 15 | Yes      |
++----+----+----+----------+
 ```
 
 #### Schema
@@ -2446,19 +2429,12 @@ Explanation:
 ```sql
 drop database if exists sql_50;
 
-drop table if exists employee;
+create table if not exists triangle (x int, y int, z int);
 
-create table if not exists employee (employee_id int, department_id int, primary_flag enum('y','n'));
+truncate table triangle;
 
-truncate table employee;
-
-insert into employee (employee_id, department_id, primary_flag) values ('1', '1', 'n');
-insert into employee (employee_id, department_id, primary_flag) values ('2', '1', 'y');
-insert into employee (employee_id, department_id, primary_flag) values ('2', '2', 'n');
-insert into employee (employee_id, department_id, primary_flag) values ('3', '3', 'n');
-insert into employee (employee_id, department_id, primary_flag) values ('4', '2', 'n');
-insert into employee (employee_id, department_id, primary_flag) values ('4', '3', 'y');
-insert into employee (employee_id, department_id, primary_flag) values ('4', '4', 'n');
+insert into triangle (x, y, z) values ('13', '15', '30');
+insert into triangle (x, y, z) values ('10', '20', '15');
 ```
 
 ## Subqueries
