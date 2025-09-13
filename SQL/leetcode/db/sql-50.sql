@@ -433,3 +433,15 @@ truncate table triangle;
 
 insert into triangle (x, y, z) values ('13', '15', '30');
 insert into triangle (x, y, z) values ('10', '20', '15');
+
+create table if not exists logs (id int, num int);
+
+truncate table logs;
+
+insert into logs (id, num) values ('1', '1');
+insert into logs (id, num) values ('2', '1');
+insert into logs (id, num) values ('3', '1');
+insert into logs (id, num) values ('4', '2');
+insert into logs (id, num) values ('5', '1');
+insert into logs (id, num) values ('6', '2');
+insert into logs (id, num) values ('7', '2');

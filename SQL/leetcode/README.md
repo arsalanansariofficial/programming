@@ -2380,24 +2380,25 @@ insert into employees (employee_id, name, reports_to, age) values ('2', 'winston
 
 ### 0610. Triangle Judgement
 
+### 0180. Consecutive Numbers
+
 #### Statement
 
 ```sql
-Table: Triangle
+Table: Logs
 
-+-------------+------+
-| Column Name | Type |
-+-------------+------+
-| x           | int  |
-| y           | int  |
-| z           | int  |
-+-------------+------+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| num         | varchar |
++-------------+---------+
 
-In SQL, (x, y, z) is the primary key column for this table.
+In SQL, id is the primary key for this table.
 
-Each row of this table contains the lengths of three line segments.
+id is an autoincrement column starting from 1.
 
-Report for every three line segments whether they can form a triangle.
+Find all numbers that appear at least three times consecutively.
 
 Return the result table in any order.
 
@@ -2406,22 +2407,29 @@ The result format is in the following example.
 Example 1:
 
 Input:
-Triangle table:
 
-+----+----+----+
-| x  | y  | z  |
-+----+----+----+
-| 13 | 15 | 30 |
-| 10 | 20 | 15 |
-+----+----+----+
+Logs table:
+
++----+-----+
+| id | num |
++----+-----+
+| 1  | 1   |
+| 2  | 1   |
+| 3  | 1   |
+| 4  | 2   |
+| 5  | 1   |
+| 6  | 2   |
+| 7  | 2   |
++----+-----+
 
 Output:
-+----+----+----+----------+
-| x  | y  | z  | triangle |
-+----+----+----+----------+
-| 13 | 15 | 30 | No       |
-| 10 | 20 | 15 | Yes      |
-+----+----+----+----------+
++-----------------+
+| ConsecutiveNums |
++-----------------+
+| 1               |
++-----------------+
+
+Explanation: 1 is the only number that appears consecutively for at least three times.
 ```
 
 #### Schema
@@ -2429,12 +2437,17 @@ Output:
 ```sql
 drop database if exists sql_50;
 
-create table if not exists triangle (x int, y int, z int);
+create table if not exists logs (id int, num int);
 
-truncate table triangle;
+truncate table logs;
 
-insert into triangle (x, y, z) values ('13', '15', '30');
-insert into triangle (x, y, z) values ('10', '20', '15');
+insert into logs (id, num) values ('1', '1');
+insert into logs (id, num) values ('2', '1');
+insert into logs (id, num) values ('3', '1');
+insert into logs (id, num) values ('4', '2');
+insert into logs (id, num) values ('5', '1');
+insert into logs (id, num) values ('6', '2');
+insert into logs (id, num) values ('7', '2');
 ```
 
 ## Subqueries
