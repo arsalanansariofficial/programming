@@ -2382,23 +2382,28 @@ insert into employees (employee_id, name, reports_to, age) values ('2', 'winston
 
 ### 0180. Consecutive Numbers
 
+### 1164. Product Price At A Given Date
+
 #### Statement
 
 ```sql
-Table: Logs
+Table: Products
 
-+-------------+---------+
-| Column Name | Type    |
-+-------------+---------+
-| id          | int     |
-| num         | varchar |
-+-------------+---------+
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| product_id    | int     |
+| new_price     | int     |
+| change_date   | date    |
++---------------+---------+
 
-In SQL, id is the primary key for this table.
+(product_id, change_date) is the primary key (combination of columns with unique values) of this table.
 
-id is an autoincrement column starting from 1.
+Each row of this table indicates that the price of some product was changed to a new price at some date.
 
-Find all numbers that appear at least three times consecutively.
+Initially, all products have price 10.
+
+Write a solution to find the prices of all products on the date 2019-08-16.
 
 Return the result table in any order.
 
@@ -2407,29 +2412,26 @@ The result format is in the following example.
 Example 1:
 
 Input:
-
-Logs table:
-
-+----+-----+
-| id | num |
-+----+-----+
-| 1  | 1   |
-| 2  | 1   |
-| 3  | 1   |
-| 4  | 2   |
-| 5  | 1   |
-| 6  | 2   |
-| 7  | 2   |
-+----+-----+
+Products table:
++------------+-----------+-------------+
+| product_id | new_price | change_date |
++------------+-----------+-------------+
+| 1          | 20        | 2019-08-14  |
+| 2          | 50        | 2019-08-14  |
+| 1          | 30        | 2019-08-15  |
+| 1          | 35        | 2019-08-16  |
+| 2          | 65        | 2019-08-17  |
+| 3          | 20        | 2019-08-18  |
++------------+-----------+-------------+
 
 Output:
-+-----------------+
-| ConsecutiveNums |
-+-----------------+
-| 1               |
-+-----------------+
-
-Explanation: 1 is the only number that appears consecutively for at least three times.
++------------+-------+
+| product_id | price |
++------------+-------+
+| 2          | 50    |
+| 1          | 35    |
+| 3          | 10    |
++------------+-------+
 ```
 
 #### Schema
@@ -2437,17 +2439,18 @@ Explanation: 1 is the only number that appears consecutively for at least three 
 ```sql
 drop database if exists sql_50;
 
-create table if not exists logs (id int, num int);
+drop table if exists products;
 
-truncate table logs;
+create table if not exists products (product_id int, new_price int, change_date date);
 
-insert into logs (id, num) values ('1', '1');
-insert into logs (id, num) values ('2', '1');
-insert into logs (id, num) values ('3', '1');
-insert into logs (id, num) values ('4', '2');
-insert into logs (id, num) values ('5', '1');
-insert into logs (id, num) values ('6', '2');
-insert into logs (id, num) values ('7', '2');
+truncate table products;
+
+insert into products (product_id, new_price, change_date) values ('1', '20', '2019-08-14');
+insert into products (product_id, new_price, change_date) values ('2', '50', '2019-08-14');
+insert into products (product_id, new_price, change_date) values ('1', '30', '2019-08-15');
+insert into products (product_id, new_price, change_date) values ('1', '35', '2019-08-16');
+insert into products (product_id, new_price, change_date) values ('2', '65', '2019-08-17');
+insert into products (product_id, new_price, change_date) values ('3', '20', '2019-08-18');
 ```
 
 ## Subqueries

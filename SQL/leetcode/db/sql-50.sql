@@ -445,3 +445,16 @@ insert into logs (id, num) values ('4', '2');
 insert into logs (id, num) values ('5', '1');
 insert into logs (id, num) values ('6', '2');
 insert into logs (id, num) values ('7', '2');
+
+drop table if exists products;
+
+create table if not exists products (product_id int, new_price int, change_date date);
+
+truncate table products;
+
+insert into products (product_id, new_price, change_date) values ('1', '20', '2019-08-14');
+insert into products (product_id, new_price, change_date) values ('2', '50', '2019-08-14');
+insert into products (product_id, new_price, change_date) values ('1', '30', '2019-08-15');
+insert into products (product_id, new_price, change_date) values ('1', '35', '2019-08-16');
+insert into products (product_id, new_price, change_date) values ('2', '65', '2019-08-17');
+insert into products (product_id, new_price, change_date) values ('3', '20', '2019-08-18');
