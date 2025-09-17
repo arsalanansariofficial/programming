@@ -458,3 +458,14 @@ insert into products (product_id, new_price, change_date) values ('1', '30', '20
 insert into products (product_id, new_price, change_date) values ('1', '35', '2019-08-16');
 insert into products (product_id, new_price, change_date) values ('2', '65', '2019-08-17');
 insert into products (product_id, new_price, change_date) values ('3', '20', '2019-08-18');
+
+create table if not exists queue (person_id int, person_name varchar(30), weight int, turn int);
+
+truncate table queue;
+
+insert into queue (person_id, person_name, weight, turn) values ('4', 'bob', '175', '5');
+insert into queue (person_id, person_name, weight, turn) values ('3', 'alex', '350', '2');
+insert into queue (person_id, person_name, weight, turn) values ('5', 'alice', '250', '1');
+insert into queue (person_id, person_name, weight, turn) values ('2', 'marie', '200', '4');
+insert into queue (person_id, person_name, weight, turn) values ('1', 'winston', '500', '6');
+insert into queue (person_id, person_name, weight, turn) values ('6', 'john cena', '400', '3');
