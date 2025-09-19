@@ -2386,72 +2386,65 @@ insert into employees (employee_id, name, reports_to, age) values ('2', 'winston
 
 ### 1204. Last Person To Fit In The Bus
 
+### 1907. Count Salary Categories
+
 #### Statement
 
 ```sql
-Table: Queue
+Table: Accounts
 
-+-------------+---------+
-| Column Name | Type    |
-+-------------+---------+
-| person_id   | int     |
-| person_name | varchar |
-| weight      | int     |
-| turn        | int     |
-+-------------+---------+
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| account_id  | int  |
+| income      | int  |
++-------------+------+
 
-person_id column contains unique values.
+account_id is the primary key (column with unique values) for this table.
 
-This table has the information about all people waiting for a bus.
+Each row contains information about the monthly income for one bank account.
 
-The person_id and turn columns will contain all numbers from 1 to n, where n is the number of rows in the table.
+Write a solution to calculate the number of bank accounts for each salary category. The salary categories are:
 
-turn determines the order of which the people will board the bus, where turn=1 denotes the first person to board and turn=n denotes the last person to board.
-weight is the weight of the person in kilograms.
+"Low Salary": All the salaries strictly less than $20000.
 
-There is a queue of people waiting to board a bus. However, the bus has a weight limit of 1000 kilograms, so there may be some people who cannot board.
+"Average Salary": All the salaries in the inclusive range [$20000, $50000].
 
-Write a solution to find the person_name of the last person that can fit on the bus without exceeding the weight limit. The test cases are generated such that the first person does not exceed the weight limit.
+"High Salary": All the salaries strictly greater than $50000.
 
-Note that only one person can board the bus at any given turn.
+The result table must contain all three categories. If there are no accounts in a category, return 0.
+
+Return the result table in any order.
 
 The result format is in the following example.
 
 Example 1:
 
 Input:
-Queue table:
 
-+-----------+-------------+--------+------+
-| person_id | person_name | weight | turn |
-+-----------+-------------+--------+------+
-| 5         | Alice       | 250    | 1    |
-| 4         | Bob         | 175    | 5    |
-| 3         | Alex        | 350    | 2    |
-| 6         | John Cena   | 400    | 3    |
-| 1         | Winston     | 500    | 6    |
-| 2         | Marie       | 200    | 4    |
-+-----------+-------------+--------+------+
+Accounts table:
++------------+--------+
+| account_id | income |
++------------+--------+
+| 3          | 108939 |
+| 2          | 12747  |
+| 8          | 87709  |
+| 6          | 91796  |
++------------+--------+
 
 Output:
-+-------------+
-| person_name |
-+-------------+
-| John Cena   |
-+-------------+
++----------------+----------------+
+| category       | accounts_count |
++----------------+----------------+
+| Low Salary     | 1              |
+| Average Salary | 0              |
+| High Salary    | 3              |
++----------------+----------------+
 
-Explanation: The folowing table is ordered by the turn for simplicity.
-
-+------+----+-----------+--------+--------------+
-| Turn | ID | Name      | Weight | Total Weight |
-+------+----+-----------+--------+--------------+
-| 1    | 5  | Alice     | 250    | 250          |
-| 2    | 3  | Alex      | 350    | 600          |
-| 3    | 6  | John Cena | 400    | 1000         | (last person to board)
-| 4    | 2  | Marie     | 200    | 1200         | (cannot board)
-| 5    | 4  | Bob       | 175    | ___          |
-| 6    | 1  | Winston   | 500    | ___          |
-+------+----+-----------+--------+--------------+
+Explanation:
+Low Salary: Account 2.
+Average Salary: No accounts.
+High Salary: Accounts 3, 6, and 8.
 ```
 
 #### Schema
@@ -2459,16 +2452,14 @@ Explanation: The folowing table is ordered by the turn for simplicity.
 ```sql
 drop database if exists sql_50;
 
-create table if not exists queue (person_id int, person_name varchar(30), weight int, turn int);
+create table if not exists accounts (account_id int, income int);
 
-truncate table queue;
+truncate table accounts;
 
-insert into queue (person_id, person_name, weight, turn) values ('4', 'bob', '175', '5');
-insert into queue (person_id, person_name, weight, turn) values ('3', 'alex', '350', '2');
-insert into queue (person_id, person_name, weight, turn) values ('5', 'alice', '250', '1');
-insert into queue (person_id, person_name, weight, turn) values ('2', 'marie', '200', '4');
-insert into queue (person_id, person_name, weight, turn) values ('1', 'winston', '500', '6');
-insert into queue (person_id, person_name, weight, turn) values ('6', 'john cena', '400', '3');
+insert into accounts (account_id, income) values ('2', '12747');
+insert into accounts (account_id, income) values ('8', '87709');
+insert into accounts (account_id, income) values ('6', '91796');
+insert into accounts (account_id, income) values ('3', '108939');
 ```
 
 ## Subqueries

@@ -469,3 +469,12 @@ insert into queue (person_id, person_name, weight, turn) values ('5', 'alice', '
 insert into queue (person_id, person_name, weight, turn) values ('2', 'marie', '200', '4');
 insert into queue (person_id, person_name, weight, turn) values ('1', 'winston', '500', '6');
 insert into queue (person_id, person_name, weight, turn) values ('6', 'john cena', '400', '3');
+
+create table if not exists accounts (account_id int, income int);
+
+truncate table accounts;
+
+insert into accounts (account_id, income) values ('2', '12747');
+insert into accounts (account_id, income) values ('8', '87709');
+insert into accounts (account_id, income) values ('6', '91796');
+insert into accounts (account_id, income) values ('3', '108939');
