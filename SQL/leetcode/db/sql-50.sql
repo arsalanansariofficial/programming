@@ -478,3 +478,16 @@ insert into accounts (account_id, income) values ('2', '12747');
 insert into accounts (account_id, income) values ('8', '87709');
 insert into accounts (account_id, income) values ('6', '91796');
 insert into accounts (account_id, income) values ('3', '108939');
+
+create table if not exists employees (employee_id int, name varchar(20), manager_id int, salary int);
+
+drop table if exists employees;
+
+truncate table employees;
+
+insert into employees (employee_id, name, manager_id, salary) values ('3', 'mila', '9', '60301');
+insert into employees (employee_id, name, manager_id, salary) values ('1', 'kalel', '11', '21241');
+insert into employees (employee_id, name, manager_id, salary) values ('13', 'emery', null, '67084');
+insert into employees (employee_id, name, manager_id, salary) values ('11', 'joziah', '6', '28485');
+insert into employees (employee_id, name, manager_id, salary) values ('9', 'mikaela', null, '50937');
+insert into employees (employee_id, name, manager_id, salary) values ('12', 'antonella', null, '31000');
