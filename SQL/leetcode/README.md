@@ -2468,27 +2468,29 @@ Introduction to **Subqueries**
 
 ### 1978. Employees Whose Managers Left The Company
 
+### 0626. Exchange Seats
+
 #### Statement
 
 ```sql
-Table: Employees
+Table: Seat
 
-+-------------+----------+
-| Column Name | Type     |
-+-------------+----------+
-| employee_id | int      |
-| name        | varchar  |
-| manager_id  | int      |
-| salary      | int      |
-+-------------+----------+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| student     | varchar |
++-------------+---------+
 
-In SQL, employee_id is the primary key for this table.
+id is the primary key (unique value) column for this table.
 
-This table contains information about the employees, their salary, and the ID of their manager. Some employees do not have a manager (manager_id is null).
+Each row of this table indicates the name and the ID of a student.
 
-Find the IDs of the employees whose salary is strictly less than $30000 and whose manager left the company. When a manager leaves the company, their information is deleted from the Employees table, but the reports still have their manager_id set to the manager that left.
+The ID sequence always starts from 1 and increments continuously.
 
-Return the result table ordered by employee_id.
+Write a solution to swap the seat id of every two consecutive students. If the number of students is odd, the id of the last student is not swapped.
+
+Return the result table ordered by id in ascending order.
 
 The result format is in the following example.
 
@@ -2496,29 +2498,30 @@ Example 1:
 
 Input:
 
-Employees table:
-+-------------+-----------+------------+--------+
-| employee_id | name      | manager_id | salary |
-+-------------+-----------+------------+--------+
-| 3           | Mila      | 9          | 60301  |
-| 12          | Antonella | null       | 31000  |
-| 13          | Emery     | null       | 67084  |
-| 1           | Kalel     | 11         | 21241  |
-| 9           | Mikaela   | null       | 50937  |
-| 11          | Joziah    | 6          | 28485  |
-+-------------+-----------+------------+--------+
+Seat table:
++----+---------+
+| id | student |
++----+---------+
+| 1  | Abbot   |
+| 2  | Doris   |
+| 3  | Emerson |
+| 4  | Green   |
+| 5  | Jeames  |
++----+---------+
 
 Output:
-+-------------+
-| employee_id |
-+-------------+
-| 11          |
-+-------------+
++----+---------+
+| id | student |
++----+---------+
+| 1  | Doris   |
+| 2  | Abbot   |
+| 3  | Green   |
+| 4  | Emerson |
+| 5  | Jeames  |
++----+---------+
 
 Explanation:
-The employees with a salary less than $30000 are 1 (Kalel) and 11 (Joziah).
-Kalel's manager is employee 11, who is still in the company (Joziah).
-Joziah's manager is employee 6, who left the company because there is no row for employee 6 as it was deleted.
+Note that if the number of students is odd, there is no need to change the last one's seat.
 ```
 
 #### Schema
@@ -2526,18 +2529,15 @@ Joziah's manager is employee 6, who left the company because there is no row for
 ```sql
 drop database if exists sql_50;
 
-drop table if exists employees;
+create table if not exists seat (id int, student varchar(255));
 
-create table if not exists employees (employee_id int, name varchar(20), manager_id int, salary int);
+truncate table seat;
 
-truncate table employees;
-
-insert into employees (employee_id, name, manager_id, salary) values ('3', 'mila', '9', '60301');
-insert into employees (employee_id, name, manager_id, salary) values ('1', 'kalel', '11', '21241');
-insert into employees (employee_id, name, manager_id, salary) values ('13', 'emery', null, '67084');
-insert into employees (employee_id, name, manager_id, salary) values ('11', 'joziah', '6', '28485');
-insert into employees (employee_id, name, manager_id, salary) values ('9', 'mikaela', null, '50937');
-insert into employees (employee_id, name, manager_id, salary) values ('12', 'antonella', null, '31000');
+insert into seat (id, student) values ('1', 'abbot');
+insert into seat (id, student) values ('2', 'doris');
+insert into seat (id, student) values ('4', 'green');
+insert into seat (id, student) values ('5', 'jeames');
+insert into seat (id, student) values ('3', 'emerson');
 ```
 
 ## Advanced String Functions / Regex / Clause

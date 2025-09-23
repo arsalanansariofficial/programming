@@ -491,3 +491,13 @@ insert into employees (employee_id, name, manager_id, salary) values ('13', 'eme
 insert into employees (employee_id, name, manager_id, salary) values ('11', 'joziah', '6', '28485');
 insert into employees (employee_id, name, manager_id, salary) values ('9', 'mikaela', null, '50937');
 insert into employees (employee_id, name, manager_id, salary) values ('12', 'antonella', null, '31000');
+
+create table if not exists seat (id int, student varchar(255));
+
+truncate table seat;
+
+insert into seat (id, student) values ('1', 'abbot');
+insert into seat (id, student) values ('2', 'doris');
+insert into seat (id, student) values ('4', 'green');
+insert into seat (id, student) values ('5', 'jeames');
+insert into seat (id, student) values ('3', 'emerson');
