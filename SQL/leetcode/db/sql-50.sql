@@ -501,3 +501,36 @@ insert into seat (id, student) values ('2', 'doris');
 insert into seat (id, student) values ('4', 'green');
 insert into seat (id, student) values ('5', 'jeames');
 insert into seat (id, student) values ('3', 'emerson');
+
+drop table if exists users;
+drop table if exists movies;
+drop table if exists movierating;
+
+create table if not exists users (user_id int, name varchar(30));
+create table if not exists movies (movie_id int, title varchar(30));
+create table if not exists movierating (movie_id int, user_id int, rating int, created_at date);
+
+truncate table movies;
+
+insert into movies (movie_id, title) values ('3', 'joker');
+insert into movies (movie_id, title) values ('1', 'avengers');
+insert into movies (movie_id, title) values ('2', 'frozen 2');
+
+truncate table users;
+
+insert into users (user_id, name) values ('3', 'maria');
+insert into users (user_id, name) values ('4', 'james');
+insert into users (user_id, name) values ('1', 'daniel');
+insert into users (user_id, name) values ('2', 'monica');
+
+truncate table movierating;
+
+insert into movierating (movie_id, user_id, rating, created_at) values ('1', '1', '3', '2020-01-12');
+insert into movierating (movie_id, user_id, rating, created_at) values ('1', '2', '4', '2020-02-11');
+insert into movierating (movie_id, user_id, rating, created_at) values ('1', '3', '2', '2020-02-12');
+insert into movierating (movie_id, user_id, rating, created_at) values ('1', '4', '1', '2020-01-01');
+insert into movierating (movie_id, user_id, rating, created_at) values ('2', '1', '5', '2020-02-17');
+insert into movierating (movie_id, user_id, rating, created_at) values ('2', '2', '2', '2020-02-01');
+insert into movierating (movie_id, user_id, rating, created_at) values ('2', '3', '2', '2020-03-01');
+insert into movierating (movie_id, user_id, rating, created_at) values ('3', '1', '3', '2020-02-22');
+insert into movierating (movie_id, user_id, rating, created_at) values ('3', '2', '4', '2020-02-25');
