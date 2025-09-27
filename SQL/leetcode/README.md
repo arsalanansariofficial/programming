@@ -2542,110 +2542,75 @@ insert into seat (id, student) values ('3', 'emerson');
 
 ### 1341. Movie Rating
 
+### 1321. Restaurant Growth
+
 #### Statement
 
 ```sql
-Table: Movies
-
+Table: Customer
 +---------------+---------+
 | Column Name   | Type    |
 +---------------+---------+
-| movie_id      | int     |
-| title         | varchar |
-+---------------+---------+
-
-movie_id is the primary key (column with unique values) for this table.
-
-title is the name of the movie.
-
-Each movie has a unique title.
-
-Table: Users
-
-+---------------+---------+
-| Column Name   | Type    |
-+---------------+---------+
-| user_id       | int     |
+| customer_id   | int     |
 | name          | varchar |
+| visited_on    | date    |
+| amount        | int     |
 +---------------+---------+
 
-user_id is the primary key (column with unique values) for this table.
+In SQL,(customer_id, visited_on) is the primary key for this table.
 
-The column name has unique values.
+This table contains data about customer transactions in a restaurant.
 
-Table: MovieRating
+visited_on is the date on which the customer with ID (customer_id) has visited the restaurant.
+amount is the total paid by a customer.
 
-+---------------+---------+
-| Column Name   | Type    |
-+---------------+---------+
-| movie_id      | int     |
-| user_id       | int     |
-| rating        | int     |
-| created_at    | date    |
-+---------------+---------+
+You are the restaurant owner and you want to analyze a possible expansion (there will be at least one customer every day).
 
-(movie_id, user_id) is the primary key (column with unique values) for this table.
+Compute the moving average of how much the customer paid in a seven days window (i.e., current day + 6 days before). average_amount should be rounded to two decimal places.
 
-This table contains the rating of a movie by a user in their review.
-
-created_at is the users review date.
-
-Write a solution to:
-
-Find the name of the user who has rated the greatest number of movies. In case of a tie, return the lexicographically smaller user name.
-
-Find the movie name with the highest average rating in February 2020. In case of a tie, return the lexicographically smaller movie name.
+Return the result table ordered by visited_on in ascending order.
 
 The result format is in the following example.
 
 Example 1:
 
 Input:
-Movies table:
-+-------------+--------------+
-| movie_id    |  title       |
-+-------------+--------------+
-| 1           | Avengers     |
-| 2           | Frozen 2     |
-| 3           | Joker        |
-+-------------+--------------+
 
-Users table:
-+-------------+--------------+
-| user_id     |  name        |
-+-------------+--------------+
-| 1           | Daniel       |
-| 2           | Monica       |
-| 3           | Maria        |
-| 4           | James        |
-+-------------+--------------+
-
-MovieRating table:
+Customer table:
 +-------------+--------------+--------------+-------------+
-| movie_id    | user_id      | rating       | created_at  |
+| customer_id | name         | visited_on   | amount      |
 +-------------+--------------+--------------+-------------+
-| 1           | 1            | 3            | 2020-01-12  |
-| 1           | 2            | 4            | 2020-02-11  |
-| 1           | 3            | 2            | 2020-02-12  |
-| 1           | 4            | 1            | 2020-01-01  |
-| 2           | 1            | 5            | 2020-02-17  |
-| 2           | 2            | 2            | 2020-02-01  |
-| 2           | 3            | 2            | 2020-03-01  |
-| 3           | 1            | 3            | 2020-02-22  |
-| 3           | 2            | 4            | 2020-02-25  |
+| 1           | Jhon         | 2019-01-01   | 100         |
+| 2           | Daniel       | 2019-01-02   | 110         |
+| 3           | Jade         | 2019-01-03   | 120         |
+| 4           | Khaled       | 2019-01-04   | 130         |
+| 5           | Winston      | 2019-01-05   | 110         |
+| 6           | Elvis        | 2019-01-06   | 140         |
+| 7           | Anna         | 2019-01-07   | 150         |
+| 8           | Maria        | 2019-01-08   | 80          |
+| 9           | Jaze         | 2019-01-09   | 110         |
+| 1           | Jhon         | 2019-01-10   | 130         |
+| 3           | Jade         | 2019-01-10   | 150         |
 +-------------+--------------+--------------+-------------+
 
 Output:
-+--------------+
-| results      |
-+--------------+
-| Daniel       |
-| Frozen 2     |
-+--------------+
++--------------+--------------+----------------+
+| visited_on   | amount       | average_amount |
++--------------+--------------+----------------+
+| 2019-01-07   | 860          | 122.86         |
+| 2019-01-08   | 840          | 120            |
+| 2019-01-09   | 840          | 120            |
+| 2019-01-10   | 1000         | 142.86         |
++--------------+--------------+----------------+
 
 Explanation:
-Daniel and Monica have rated 3 movies ("Avengers", "Frozen 2" and "Joker") but Daniel is smaller lexicographically.
-Frozen 2 and Joker have a rating average of 3.5 in February but Frozen 2 is smaller lexicographically.
+1st moving average from 2019-01-01 to 2019-01-07 has an average_amount of (100 + 110 + 120 + 130 + 110 + 140 + 150)/7 = 122.86
+
+2nd moving average from 2019-01-02 to 2019-01-08 has an average_amount of (110 + 120 + 130 + 110 + 140 + 150 + 80)/7 = 120
+
+3rd moving average from 2019-01-03 to 2019-01-09 has an average_amount of (120 + 130 + 110 + 140 + 150 + 80 + 110)/7 = 120
+
+4th moving average from 2019-01-04 to 2019-01-10 has an average_amount of (130 + 110 + 140 + 150 + 80 + 110 + 130 + 150)/7 = 142.86
 ```
 
 #### Schema
@@ -2653,38 +2618,23 @@ Frozen 2 and Joker have a rating average of 3.5 in February but Frozen 2 is smal
 ```sql
 drop database if exists sql_50;
 
-drop table if exists users;
-drop table if exists movies;
-drop table if exists movierating;
+drop table if exists customer;
 
-create table if not exists users (user_id int, name varchar(30));
-create table if not exists movies (movie_id int, title varchar(30));
-create table if not exists movierating (movie_id int, user_id int, rating int, created_at date);
+create table if not exists customer (customer_id int, name varchar(20), visited_on date, amount int);
 
-truncate table movies;
+truncate table customer;
 
-insert into movies (movie_id, title) values ('3', 'joker');
-insert into movies (movie_id, title) values ('1', 'avengers');
-insert into movies (movie_id, title) values ('2', 'frozen 2');
-
-truncate table users;
-
-insert into users (user_id, name) values ('3', 'maria');
-insert into users (user_id, name) values ('4', 'james');
-insert into users (user_id, name) values ('1', 'daniel');
-insert into users (user_id, name) values ('2', 'monica');
-
-truncate table movierating;
-
-insert into movierating (movie_id, user_id, rating, created_at) values ('1', '1', '3', '2020-01-12');
-insert into movierating (movie_id, user_id, rating, created_at) values ('1', '2', '4', '2020-02-11');
-insert into movierating (movie_id, user_id, rating, created_at) values ('1', '3', '2', '2020-02-12');
-insert into movierating (movie_id, user_id, rating, created_at) values ('1', '4', '1', '2020-01-01');
-insert into movierating (movie_id, user_id, rating, created_at) values ('2', '1', '5', '2020-02-17');
-insert into movierating (movie_id, user_id, rating, created_at) values ('2', '2', '2', '2020-02-01');
-insert into movierating (movie_id, user_id, rating, created_at) values ('2', '3', '2', '2020-03-01');
-insert into movierating (movie_id, user_id, rating, created_at) values ('3', '1', '3', '2020-02-22');
-insert into movierating (movie_id, user_id, rating, created_at) values ('3', '2', '4', '2020-02-25');
+insert into customer (customer_id, name, visited_on, amount) values ('1', 'jhon', '2019-01-01', '100');
+insert into customer (customer_id, name, visited_on, amount) values ('3', 'jade', '2019-01-03', '120');
+insert into customer (customer_id, name, visited_on, amount) values ('7', 'anna', '2019-01-07', '150');
+insert into customer (customer_id, name, visited_on, amount) values ('8', 'maria', '2019-01-08', '80');
+insert into customer (customer_id, name, visited_on, amount) values ('9', 'jaze', '2019-01-09', '110');
+insert into customer (customer_id, name, visited_on, amount) values ('1', 'jhon', '2019-01-10', '130');
+insert into customer (customer_id, name, visited_on, amount) values ('3', 'jade', '2019-01-10', '150');
+insert into customer (customer_id, name, visited_on, amount) values ('6', 'elvis', '2019-01-06', '140');
+insert into customer (customer_id, name, visited_on, amount) values ('2', 'daniel', '2019-01-02', '110');
+insert into customer (customer_id, name, visited_on, amount) values ('4', 'khaled', '2019-01-04', '130');
+insert into customer (customer_id, name, visited_on, amount) values ('5', 'winston', '2019-01-05', '110');
 ```
 
 ## Advanced String Functions / Regex / Clause

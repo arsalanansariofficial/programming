@@ -534,3 +534,21 @@ insert into movierating (movie_id, user_id, rating, created_at) values ('2', '2'
 insert into movierating (movie_id, user_id, rating, created_at) values ('2', '3', '2', '2020-03-01');
 insert into movierating (movie_id, user_id, rating, created_at) values ('3', '1', '3', '2020-02-22');
 insert into movierating (movie_id, user_id, rating, created_at) values ('3', '2', '4', '2020-02-25');
+
+create table if not exists customer (customer_id int, name varchar(20), visited_on date, amount int);
+
+drop table if exists customer;
+
+truncate table customer;
+
+insert into customer (customer_id, name, visited_on, amount) values ('1', 'jhon', '2019-01-01', '100');
+insert into customer (customer_id, name, visited_on, amount) values ('3', 'jade', '2019-01-03', '120');
+insert into customer (customer_id, name, visited_on, amount) values ('7', 'anna', '2019-01-07', '150');
+insert into customer (customer_id, name, visited_on, amount) values ('8', 'maria', '2019-01-08', '80');
+insert into customer (customer_id, name, visited_on, amount) values ('9', 'jaze', '2019-01-09', '110');
+insert into customer (customer_id, name, visited_on, amount) values ('1', 'jhon', '2019-01-10', '130');
+insert into customer (customer_id, name, visited_on, amount) values ('3', 'jade', '2019-01-10', '150');
+insert into customer (customer_id, name, visited_on, amount) values ('6', 'elvis', '2019-01-06', '140');
+insert into customer (customer_id, name, visited_on, amount) values ('2', 'daniel', '2019-01-02', '110');
+insert into customer (customer_id, name, visited_on, amount) values ('4', 'khaled', '2019-01-04', '130');
+insert into customer (customer_id, name, visited_on, amount) values ('5', 'winston', '2019-01-05', '110');
