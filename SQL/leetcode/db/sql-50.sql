@@ -552,3 +552,12 @@ insert into customer (customer_id, name, visited_on, amount) values ('6', 'elvis
 insert into customer (customer_id, name, visited_on, amount) values ('2', 'daniel', '2019-01-02', '110');
 insert into customer (customer_id, name, visited_on, amount) values ('4', 'khaled', '2019-01-04', '130');
 insert into customer (customer_id, name, visited_on, amount) values ('5', 'winston', '2019-01-05', '110');
+
+create table if not exists requestaccepted (requester_id int not null, accepter_id int null, accept_date date null);
+
+truncate table requestaccepted;
+
+insert into requestaccepted (requester_id, accepter_id, accept_date) values ('1', '2', '2016/06/03');
+insert into requestaccepted (requester_id, accepter_id, accept_date) values ('1', '3', '2016/06/08');
+insert into requestaccepted (requester_id, accepter_id, accept_date) values ('2', '3', '2016/06/08');
+insert into requestaccepted (requester_id, accepter_id, accept_date) values ('3', '4', '2016/06/09');
