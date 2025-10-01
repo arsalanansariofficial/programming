@@ -561,3 +561,12 @@ insert into requestaccepted (requester_id, accepter_id, accept_date) values ('1'
 insert into requestaccepted (requester_id, accepter_id, accept_date) values ('1', '3', '2016/06/08');
 insert into requestaccepted (requester_id, accepter_id, accept_date) values ('2', '3', '2016/06/08');
 insert into requestaccepted (requester_id, accepter_id, accept_date) values ('3', '4', '2016/06/09');
+
+create table if not exists insurance (pid int, tiv_2015 float, tiv_2016 float, lat float, lon float);
+
+truncate table insurance;
+
+insert into insurance (pid, tiv_2015, tiv_2016, lat, lon) values ('1', '10', '5', '10', '10');
+insert into insurance (pid, tiv_2015, tiv_2016, lat, lon) values ('2', '20', '20', '20', '20');
+insert into insurance (pid, tiv_2015, tiv_2016, lat, lon) values ('3', '10', '30', '20', '20');
+insert into insurance (pid, tiv_2015, tiv_2016, lat, lon) values ('4', '10', '40', '40', '40');
