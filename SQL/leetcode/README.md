@@ -2730,7 +2730,7 @@ tiv_2015 is the total investment value in 2015 and tiv_2016 is the total investm
 
 lat is the latitude of the policy holders city. Its guaranteed that lat is not NULL.
 
-lon is the longitude of the policy holders city. Its guaranteed that lon is not NULL. 
+lon is the longitude of the policy holders city. Its guaranteed that lon is not NULL.
 
 Write a solution to report the sum of all total investment values in 2016 tiv_2016, for all policyholders who:
 
@@ -2742,7 +2742,7 @@ The result format is in the following example.
 
 Example 1:
 
-Input: 
+Input:
 
 Insurance table:
 +-----+----------+----------+-----+-----+
@@ -2754,14 +2754,14 @@ Insurance table:
 | 4   | 10       | 40       | 40  | 40  |
 +-----+----------+----------+-----+-----+
 
-Output: 
+Output:
 +----------+
 | tiv_2016 |
 +----------+
 | 45.00    |
 +----------+
 
-Explanation: 
+Explanation:
 
 The first record in the table, like the last record, meets both of the two criteria.
 
@@ -2785,6 +2785,127 @@ insert into insurance (pid, tiv_2015, tiv_2016, lat, lon) values ('1', '10', '5'
 insert into insurance (pid, tiv_2015, tiv_2016, lat, lon) values ('2', '20', '20', '20', '20');
 insert into insurance (pid, tiv_2015, tiv_2016, lat, lon) values ('3', '10', '30', '20', '20');
 insert into insurance (pid, tiv_2015, tiv_2016, lat, lon) values ('4', '10', '40', '40', '40');
+```
+
+### 0185. Department Top Three Salaries
+
+#### Statement
+
+```sql
+Table: Employee
+
++--------------+---------+
+| Column Name  | Type    |
++--------------+---------+
+| id           | int     |
+| name         | varchar |
+| salary       | int     |
+| departmentId | int     |
++--------------+---------+
+
+id is the primary key (column with unique values) for this table.
+
+departmentId is a foreign key (reference column) of the ID from the Department table.
+
+Each row of this table indicates the ID, name, and salary of an employee. It also contains the ID of their department.
+
+Table: Department
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| name        | varchar |
++-------------+---------+
+
+id is the primary key (column with unique values) for this table.
+
+Each row of this table indicates the ID of a department and its name.
+
+A companys executives are interested in seeing who earns the most money in each of the companys departments. A high earner in a department is an employee who has a salary in the top three unique salaries for that department.
+
+Write a solution to find the employees who are high earners in each of the departments.
+
+Return the result table in any order.
+
+The result format is in the following example.
+
+Example 1:
+
+Input:
+
+Employee table:
++----+-------+--------+--------------+
+| id | name  | salary | departmentId |
++----+-------+--------+--------------+
+| 1  | Joe   | 85000  | 1            |
+| 2  | Henry | 80000  | 2            |
+| 3  | Sam   | 60000  | 2            |
+| 4  | Max   | 90000  | 1            |
+| 5  | Janet | 69000  | 1            |
+| 6  | Randy | 85000  | 1            |
+| 7  | Will  | 70000  | 1            |
++----+-------+--------+--------------+
+
+Department table:
++----+-------+
+| id | name  |
++----+-------+
+| 1  | IT    |
+| 2  | Sales |
++----+-------+
+
+Output:
++------------+----------+--------+
+| Department | Employee | Salary |
++------------+----------+--------+
+| IT         | Max      | 90000  |
+| IT         | Joe      | 85000  |
+| IT         | Randy    | 85000  |
+| IT         | Will     | 70000  |
+| Sales      | Henry    | 80000  |
+| Sales      | Sam      | 60000  |
++------------+----------+--------+
+Explanation:
+
+In the IT department:
+- Max earns the highest unique salary
+- Both Randy and Joe earn the second-highest unique salary
+- Will earns the third-highest unique salary
+
+In the Sales department:
+- Henry earns the highest salary
+- Sam earns the second-highest salary
+- There is no third-highest salary as there are only two employees
+```
+
+#### Schema
+
+```sql
+drop database if exists sql_50;
+
+drop table if exists employee;
+
+create table if not exists employee (id int, name varchar(255), salary int, departmentid int);
+
+truncate table employee;
+
+insert into employee (id, name, salary, departmentid) values ('1', 'joe', '85000', '1');
+insert into employee (id, name, salary, departmentid) values ('3', 'sam', '60000', '2');
+insert into employee (id, name, salary, departmentid) values ('4', 'max', '90000', '1');
+insert into employee (id, name, salary, departmentid) values ('7', 'will', '70000', '1');
+insert into employee (id, name, salary, departmentid) values ('2', 'henry', '80000', '2');
+insert into employee (id, name, salary, departmentid) values ('5', 'janet', '69000', '1');
+insert into employee (id, name, salary, departmentid) values ('6', 'randy', '85000', '1');
+
+drop table if exists department;
+
+create table if not exists department (id int, name varchar(255));
+
+truncate table department;
+
+insert into department (id, name) values ('1', 'it');
+insert into department (id, name) values ('2', 'sales');
 ```
 
 ## Advanced String Functions / Regex / Clause

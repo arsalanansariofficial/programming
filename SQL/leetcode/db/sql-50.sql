@@ -570,3 +570,26 @@ insert into insurance (pid, tiv_2015, tiv_2016, lat, lon) values ('1', '10', '5'
 insert into insurance (pid, tiv_2015, tiv_2016, lat, lon) values ('2', '20', '20', '20', '20');
 insert into insurance (pid, tiv_2015, tiv_2016, lat, lon) values ('3', '10', '30', '20', '20');
 insert into insurance (pid, tiv_2015, tiv_2016, lat, lon) values ('4', '10', '40', '40', '40');
+
+drop table if exists employee;
+
+create table if not exists employee (id int, name varchar(255), salary int, departmentid int);
+
+truncate table employee;
+
+insert into employee (id, name, salary, departmentid) values ('1', 'joe', '85000', '1');
+insert into employee (id, name, salary, departmentid) values ('3', 'sam', '60000', '2');
+insert into employee (id, name, salary, departmentid) values ('4', 'max', '90000', '1');
+insert into employee (id, name, salary, departmentid) values ('7', 'will', '70000', '1');
+insert into employee (id, name, salary, departmentid) values ('2', 'henry', '80000', '2');
+insert into employee (id, name, salary, departmentid) values ('5', 'janet', '69000', '1');
+insert into employee (id, name, salary, departmentid) values ('6', 'randy', '85000', '1');
+
+drop table if exists department;
+
+create table if not exists department (id int, name varchar(255));
+
+truncate table department;
+
+insert into department (id, name) values ('1', 'it');
+insert into department (id, name) values ('2', 'sales');
