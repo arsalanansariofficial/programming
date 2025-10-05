@@ -2912,6 +2912,66 @@ insert into department (id, name) values ('2', 'sales');
 
 Transforming data while quering using **String Functions / Regex / Clause**
 
+### 1667. Fix Names In A Table
+
+#### Statement
+
+```sql
+Table: Users
+
++----------------+---------+
+| Column Name    | Type    |
++----------------+---------+
+| user_id        | int     |
+| name           | varchar |
++----------------+---------+
+
+user_id is the primary key (column with unique values) for this table.
+
+This table contains the ID and the name of the user. The name consists of only lowercase and uppercase characters.
+
+Write a solution to fix the names so that only the first character is uppercase and the rest are lowercase.
+
+Return the result table ordered by user_id.
+
+The result format is in the following example.
+
+Example 1:
+
+Input: 
+
+Users table:
+
++---------+-------+
+| user_id | name  |
++---------+-------+
+| 1       | aLice |
+| 2       | bOB   |
++---------+-------+
+
+Output: 
+
++---------+-------+
+| user_id | name  |
++---------+-------+
+| 1       | Alice |
+| 2       | Bob   |
++---------+-------+
+```
+
+#### Schema
+
+```sql
+drop database if exists sql_50;
+
+create table if not exists users (user_id int, name varchar(40));
+
+truncate table users;
+
+insert into users (user_id, name) values ('2', 'bob');
+insert into users (user_id, name) values ('1', 'alice');
+```
+
 ## Author
 
 [Arsalan Ansari](https://www.github.com/madebyarsalan)

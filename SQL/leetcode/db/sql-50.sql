@@ -593,3 +593,10 @@ truncate table department;
 
 insert into department (id, name) values ('1', 'it');
 insert into department (id, name) values ('2', 'sales');
+
+create table if not exists users (user_id int, name varchar(40));
+
+truncate table users;
+
+insert into users (user_id, name) values ('2', 'bob');
+insert into users (user_id, name) values ('1', 'alice');
