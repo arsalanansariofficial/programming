@@ -600,3 +600,13 @@ truncate table users;
 
 insert into users (user_id, name) values ('2', 'bob');
 insert into users (user_id, name) values ('1', 'alice');
+
+create table if not exists patients (patient_id int, patient_name varchar(30), conditions varchar(100));
+
+truncate table patients;
+
+insert into patients (patient_id, patient_name, conditions) values ('2', 'alice', '');
+insert into patients (patient_id, patient_name, conditions) values ('5', 'alain', 'diab201');
+insert into patients (patient_id, patient_name, conditions) values ('3', 'bob', 'diab100 myop');
+insert into patients (patient_id, patient_name, conditions) values ('1', 'daniel', 'yfev cough');
+insert into patients (patient_id, patient_name, conditions) values ('4', 'george', 'acne diab100');
