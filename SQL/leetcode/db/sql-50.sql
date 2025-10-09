@@ -610,3 +610,11 @@ insert into patients (patient_id, patient_name, conditions) values ('5', 'alain'
 insert into patients (patient_id, patient_name, conditions) values ('3', 'bob', 'diab100 myop');
 insert into patients (patient_id, patient_name, conditions) values ('1', 'daniel', 'yfev cough');
 insert into patients (patient_id, patient_name, conditions) values ('4', 'george', 'acne diab100');
+
+create table if not exists person (id int, email varchar(255));
+
+truncate table person;
+
+insert into person (id, email) values ('2', 'bob@example.com');
+insert into person (id, email) values ('1', 'john@example.com');
+insert into person (id, email) values ('3', 'john@example.com');

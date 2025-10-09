@@ -3041,6 +3041,72 @@ insert into patients (patient_id, patient_name, conditions) values ('1', 'daniel
 insert into patients (patient_id, patient_name, conditions) values ('4', 'george', 'acne diab100');
 ```
 
+### 0196. Delete Duplicate Emails
+
+#### Statement
+
+```sql
+Table: Person
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| email       | varchar |
++-------------+---------+
+
+id is the primary key (column with unique values) for this table.
+
+Each row of this table contains an email. The emails will not contain uppercase letters.
+
+Write a solution to delete all duplicate emails, keeping only one unique email with the smallest id.
+
+For SQL users, please note that you are supposed to write a DELETE statement and not a SELECT one.
+
+For Pandas users, please note that you are supposed to modify Person in place.
+
+After running your script, the answer shown is the Person table. The driver will first compile and run your piece of code and then show the Person table. The final order of the Person table does not matter.
+
+The result format is in the following example.
+
+Example 1:
+
+Input:
+
+Person table:
++----+------------------+
+| id | email            |
++----+------------------+
+| 1  | john@example.com |
+| 2  | bob@example.com  |
+| 3  | john@example.com |
++----+------------------+
+
+Output:
++----+------------------+
+| id | email            |
++----+------------------+
+| 1  | john@example.com |
+| 2  | bob@example.com  |
++----+------------------+
+
+Explanation: john@example.com is repeated two times. We keep the row with the smallest Id = 1.
+```
+
+#### Schema
+
+```sql
+drop database if exists sql_50;
+
+create table if not exists person (id int, email varchar(255));
+
+truncate table person;
+
+insert into person (id, email) values ('2', 'bob@example.com');
+insert into person (id, email) values ('1', 'john@example.com');
+insert into person (id, email) values ('3', 'john@example.com');
+```
+
 ## Author
 
 [Arsalan Ansari](https://www.github.com/madebyarsalan)
