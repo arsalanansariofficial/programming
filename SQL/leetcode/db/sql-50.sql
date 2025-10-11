@@ -618,3 +618,13 @@ truncate table person;
 insert into person (id, email) values ('2', 'bob@example.com');
 insert into person (id, email) values ('1', 'john@example.com');
 insert into person (id, email) values ('3', 'john@example.com');
+
+drop table if exists employee;
+
+create table if not exists employee (id int, salary int);
+
+truncate table employee;
+
+insert into employee (id, salary) values ('1', '100');
+insert into employee (id, salary) values ('2', '200');
+insert into employee (id, salary) values ('3', '300');
