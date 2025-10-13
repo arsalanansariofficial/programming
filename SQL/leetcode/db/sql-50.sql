@@ -628,3 +628,15 @@ truncate table employee;
 insert into employee (id, salary) values ('1', '100');
 insert into employee (id, salary) values ('2', '200');
 insert into employee (id, salary) values ('3', '300');
+
+create table if not exists activities (sell_date date, product varchar(20));
+
+truncate table activities;
+
+insert into activities (sell_date, product) values ('2020-06-02', 'mask');
+insert into activities (sell_date, product) values ('2020-06-02', 'mask');
+insert into activities (sell_date, product) values ('2020-06-01', 'bible');
+insert into activities (sell_date, product) values ('2020-06-01', 'pencil');
+insert into activities (sell_date, product) values ('2020-05-30', 't-shirt');
+insert into activities (sell_date, product) values ('2020-05-30', 'headphone');
+insert into activities (sell_date, product) values ('2020-05-30', 'basketball');

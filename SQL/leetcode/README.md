@@ -3109,23 +3109,28 @@ insert into person (id, email) values ('3', 'john@example.com');
 
 ### 0176. Second Highest Salary
 
+### 1484. Group Sold Products By The Date
+
 #### Statement
 
 ```sql
-Table: Employee
+Table Activities:
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| sell_date   | date    |
+| product     | varchar |
++-------------+---------+
 
-+-------------+------+
-| Column Name | Type |
-+-------------+------+
-| id          | int  |
-| salary      | int  |
-+-------------+------+
+There is no primary key (column with unique values) for this table. It may contain duplicates.
 
-id is the primary key (column with unique values) for this table.
+Each row of this table contains the product name and the date it was sold in a market.
 
-Each row of this table contains information about the salary of an employee.
+Write a solution to find for each date the number of different products sold and their names.
 
-Write a solution to find the second highest distinct salary from the Employee table. If there is no second highest salary, return null (return None in Pandas).
+The sold products names for each date should be sorted lexicographically.
+
+Return the result table ordered by sell_date.
 
 The result format is in the following example.
 
@@ -3133,42 +3138,35 @@ Example 1:
 
 Input:
 
-Employee table:
-
-+----+--------+
-| id | salary |
-+----+--------+
-| 1  | 100    |
-| 2  | 200    |
-| 3  | 300    |
-+----+--------+
-
-Output:
-
-+---------------------+
-| SecondHighestSalary |
-+---------------------+
-| 200                 |
-+---------------------+
-Example 2:
-
-Input:
-
-Employee table:
-
-+----+--------+
-| id | salary |
-+----+--------+
-| 1  | 100    |
-+----+--------+
+Activities table:
++------------+------------+
+| sell_date  | product    |
++------------+------------+
+| 2020-05-30 | Headphone  |
+| 2020-06-01 | Pencil     |
+| 2020-06-02 | Mask       |
+| 2020-05-30 | Basketball |
+| 2020-06-01 | Bible      |
+| 2020-06-02 | Mask       |
+| 2020-05-30 | T-Shirt    |
++------------+------------+
 
 Output:
++------------+----------+------------------------------+
+| sell_date  | num_sold | products                     |
++------------+----------+------------------------------+
+| 2020-05-30 | 3        | Basketball,Headphone,T-shirt |
+| 2020-06-01 | 2        | Bible,Pencil                 |
+| 2020-06-02 | 1        | Mask                         |
++------------+----------+------------------------------+
 
-+---------------------+
-| SecondHighestSalary |
-+---------------------+
-| null                |
-+---------------------+
+Explanation:
+
+For 2020-05-30, Sold items were (Headphone, Basketball, T-shirt), we sort them lexicographically and separate them by a comma.
+
+For 2020-06-01, Sold items were (Pencil, Bible), we sort them lexicographically and separate them by a comma.
+
+For 2020-06-02, the Sold item is (Mask), we just return it.
 ```
 
 #### Schema
@@ -3176,15 +3174,17 @@ Output:
 ```sql
 drop database if exists sql_50;
 
-drop table if exists employee;
+create table if not exists activities (sell_date date, product varchar(20));
 
-create table if not exists employee (id int, salary int);
+truncate table activities;
 
-truncate table employee;
-
-insert into employee (id, salary) values ('1', '100');
-insert into employee (id, salary) values ('2', '200');
-insert into employee (id, salary) values ('3', '300');
+insert into activities (sell_date, product) values ('2020-06-02', 'mask');
+insert into activities (sell_date, product) values ('2020-06-02', 'mask');
+insert into activities (sell_date, product) values ('2020-06-01', 'bible');
+insert into activities (sell_date, product) values ('2020-06-01', 'pencil');
+insert into activities (sell_date, product) values ('2020-05-30', 't-shirt');
+insert into activities (sell_date, product) values ('2020-05-30', 'headphone');
+insert into activities (sell_date, product) values ('2020-05-30', 'basketball');
 ```
 
 ## Author
