@@ -640,3 +640,34 @@ insert into activities (sell_date, product) values ('2020-06-01', 'pencil');
 insert into activities (sell_date, product) values ('2020-05-30', 't-shirt');
 insert into activities (sell_date, product) values ('2020-05-30', 'headphone');
 insert into activities (sell_date, product) values ('2020-05-30', 'basketball');
+
+drop table if exists products;
+
+create table if not exists products (product_id int, product_name varchar(40), product_category varchar(40));
+
+truncate table products;
+
+insert into products (product_id, product_name, product_category) values ('3', 'hp', 'laptop');
+insert into products (product_id, product_name, product_category) values ('4', 'lenovo', 'laptop');
+insert into products (product_id, product_name, product_category) values ('5', 'leetcode kit', 't-shirt');
+insert into products (product_id, product_name, product_category) values ('1', 'leetcode solutions', 'book');
+insert into products (product_id, product_name, product_category) values ('2', 'jewels of stringology', 'book');
+
+drop table if exists orders;
+
+create table if not exists orders (product_id int, order_date date, unit int);
+
+truncate table orders;
+
+insert into orders (product_id, order_date, unit) values ('3', '2020-02-17', '2');
+insert into orders (product_id, order_date, unit) values ('3', '2020-02-24', '3');
+insert into orders (product_id, order_date, unit) values ('1', '2020-02-05', '60');
+insert into orders (product_id, order_date, unit) values ('1', '2020-02-10', '70');
+insert into orders (product_id, order_date, unit) values ('2', '2020-01-18', '30');
+insert into orders (product_id, order_date, unit) values ('2', '2020-02-11', '80');
+insert into orders (product_id, order_date, unit) values ('4', '2020-03-01', '20');
+insert into orders (product_id, order_date, unit) values ('4', '2020-03-04', '30');
+insert into orders (product_id, order_date, unit) values ('4', '2020-03-04', '60');
+insert into orders (product_id, order_date, unit) values ('5', '2020-02-25', '50');
+insert into orders (product_id, order_date, unit) values ('5', '2020-02-27', '50');
+insert into orders (product_id, order_date, unit) values ('5', '2020-03-01', '50');
