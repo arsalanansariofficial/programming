@@ -3113,38 +3113,31 @@ insert into person (id, email) values ('3', 'john@example.com');
 
 ### 1327. List The Products Ordered In A Period
 
+### 1517. Find Users With Valid Emails
+
 #### Statement
 
 ```sql
-Table: Products
-+------------------+---------+
-| Column Name      | Type    |
-+------------------+---------+
-| product_id       | int     |
-| product_name     | varchar |
-| product_category | varchar |
-+------------------+---------+
-
-product_id is the primary key (column with unique values) for this table.
-
-This table contains data about the companys products.
-
-Table: Orders
+Table: Users
 +---------------+---------+
 | Column Name   | Type    |
 +---------------+---------+
-| product_id    | int     |
-| order_date    | date    |
-| unit          | int     |
+| user_id       | int     |
+| name          | varchar |
+| mail          | varchar |
 +---------------+---------+
 
-This table may have duplicate rows.
+user_id is the primary key (column with unique values) for this table.
 
-product_id is a foreign key (reference column) to the Products table.
+This table contains information of the users signed up in a website. Some e-mails are invalid.
 
-unit is the number of products ordered in order_date.
+Write a solution to find the users who have valid emails.
 
-Write a solution to get the names of products that have at least 100 units ordered in February 2020 and their amount.
+A valid e-mail has a prefix name and a domain where:
+
+The prefix name is a string that may contain letters (upper or lower case), digits, underscore '_', period '.', and/or dash '-'. The prefix name must start with a letter.
+
+The domain is @leetcode.com.
 
 Return the result table in any order.
 
@@ -3154,54 +3147,37 @@ Example 1:
 
 Input:
 
-Products table:
-+-------------+-----------------------+------------------+
-| product_id  | product_name          | product_category |
-+-------------+-----------------------+------------------+
-| 1           | Leetcode Solutions    | Book             |
-| 2           | Jewels of Stringology | Book             |
-| 3           | HP                    | Laptop           |
-| 4           | Lenovo                | Laptop           |
-| 5           | Leetcode Kit          | T-shirt          |
-+-------------+-----------------------+------------------+
-
-Orders table:
-+--------------+--------------+----------+
-| product_id   | order_date   | unit     |
-+--------------+--------------+----------+
-| 1            | 2020-02-05   | 60       |
-| 1            | 2020-02-10   | 70       |
-| 2            | 2020-01-18   | 30       |
-| 2            | 2020-02-11   | 80       |
-| 3            | 2020-02-17   | 2        |
-| 3            | 2020-02-24   | 3        |
-| 4            | 2020-03-01   | 20       |
-| 4            | 2020-03-04   | 30       |
-| 4            | 2020-03-04   | 60       |
-| 5            | 2020-02-25   | 50       |
-| 5            | 2020-02-27   | 50       |
-| 5            | 2020-03-01   | 50       |
-+--------------+--------------+----------+
+Users table:
++---------+-----------+-------------------------+
+| user_id | name      | mail                    |
++---------+-----------+-------------------------+
+| 1       | Winston   | winston@leetcode.com    |
+| 2       | Jonathan  | jonathanisgreat         |
+| 3       | Annabelle | bella-@leetcode.com     |
+| 4       | Sally     | sally.come@leetcode.com |
+| 5       | Marwan    | quarz#2020@leetcode.com |
+| 6       | David     | david69@gmail.com       |
+| 7       | Shapiro   | .shapo@leetcode.com     |
++---------+-----------+-------------------------+
 
 Output:
-+--------------------+---------+
-| product_name       | unit    |
-+--------------------+---------+
-| Leetcode Solutions | 130     |
-| Leetcode Kit       | 100     |
-+--------------------+---------+
++---------+-----------+-------------------------+
+| user_id | name      | mail                    |
++---------+-----------+-------------------------+
+| 1       | Winston   | winston@leetcode.com    |
+| 3       | Annabelle | bella-@leetcode.com     |
+| 4       | Sally     | sally.come@leetcode.com |
++---------+-----------+-------------------------+
 
 Explanation:
 
-Products with product_id = 1 is ordered in February a total of (60 + 70) = 130.
+The mail of user 2 does not have a domain.
 
-Products with product_id = 2 is ordered in February a total of 80.
+The mail of user 5 has the # sign which is not allowed.
 
-Products with product_id = 3 is ordered in February a total of (2 + 3) = 5.
+The mail of user 6 does not have the leetcode domain.
 
-Products with product_id = 4 was not ordered in February 2020.
-
-Products with product_id = 5 is ordered in February a total of (50 + 50) = 100.
+The mail of user 7 starts with a period.
 ```
 
 #### Schema
@@ -3209,36 +3185,17 @@ Products with product_id = 5 is ordered in February a total of (50 + 50) = 100.
 ```sql
 drop database if exists sql_50;
 
-drop table if exists products;
+create table if not exists users (user_id int, name varchar(30), mail varchar(50));
 
-create table if not exists products (product_id int, product_name varchar(40), product_category varchar(40));
+truncate table users;
 
-truncate table products;
-
-insert into products (product_id, product_name, product_category) values ('3', 'hp', 'laptop');
-insert into products (product_id, product_name, product_category) values ('4', 'lenovo', 'laptop');
-insert into products (product_id, product_name, product_category) values ('5', 'leetcode kit', 't-shirt');
-insert into products (product_id, product_name, product_category) values ('1', 'leetcode solutions', 'book');
-insert into products (product_id, product_name, product_category) values ('2', 'jewels of stringology', 'book');
-
-drop table if exists orders;
-
-create table if not exists orders (product_id int, order_date date, unit int);
-
-truncate table orders;
-
-insert into orders (product_id, order_date, unit) values ('3', '2020-02-17', '2');
-insert into orders (product_id, order_date, unit) values ('3', '2020-02-24', '3');
-insert into orders (product_id, order_date, unit) values ('1', '2020-02-05', '60');
-insert into orders (product_id, order_date, unit) values ('1', '2020-02-10', '70');
-insert into orders (product_id, order_date, unit) values ('2', '2020-01-18', '30');
-insert into orders (product_id, order_date, unit) values ('2', '2020-02-11', '80');
-insert into orders (product_id, order_date, unit) values ('4', '2020-03-01', '20');
-insert into orders (product_id, order_date, unit) values ('4', '2020-03-04', '30');
-insert into orders (product_id, order_date, unit) values ('4', '2020-03-04', '60');
-insert into orders (product_id, order_date, unit) values ('5', '2020-02-25', '50');
-insert into orders (product_id, order_date, unit) values ('5', '2020-02-27', '50');
-insert into orders (product_id, order_date, unit) values ('5', '2020-03-01', '50');
+insert into users (user_id, name, mail) values ('6', 'david', 'david69@gmail.com');
+insert into users (user_id, name, mail) values ('2', 'jonathan', 'jonathanisgreat');
+insert into users (user_id, name, mail) values ('7', 'shapiro', '.shapo@leetcode.com');
+insert into users (user_id, name, mail) values ('1', 'winston', 'winston@leetcode.com');
+insert into users (user_id, name, mail) values ('3', 'annabelle', 'bella-@leetcode.com');
+insert into users (user_id, name, mail) values ('4', 'sally', 'sally.come@leetcode.com');
+insert into users (user_id, name, mail) values ('5', 'marwan', 'quarz#2020@leetcode.com');
 ```
 
 ## Author

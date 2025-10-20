@@ -671,3 +671,15 @@ insert into orders (product_id, order_date, unit) values ('4', '2020-03-04', '60
 insert into orders (product_id, order_date, unit) values ('5', '2020-02-25', '50');
 insert into orders (product_id, order_date, unit) values ('5', '2020-02-27', '50');
 insert into orders (product_id, order_date, unit) values ('5', '2020-03-01', '50');
+
+create table if not exists users (user_id int, name varchar(30), mail varchar(50));
+
+truncate table users;
+
+insert into users (user_id, name, mail) values ('6', 'david', 'david69@gmail.com');
+insert into users (user_id, name, mail) values ('2', 'jonathan', 'jonathanisgreat');
+insert into users (user_id, name, mail) values ('7', 'shapiro', '.shapo@leetcode.com');
+insert into users (user_id, name, mail) values ('1', 'winston', 'winston@leetcode.com');
+insert into users (user_id, name, mail) values ('3', 'annabelle', 'bella-@leetcode.com');
+insert into users (user_id, name, mail) values ('4', 'sally', 'sally.come@leetcode.com');
+insert into users (user_id, name, mail) values ('5', 'marwan', 'quarz#2020@leetcode.com');
