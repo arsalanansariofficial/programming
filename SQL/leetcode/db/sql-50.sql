@@ -683,3 +683,17 @@ insert into users (user_id, name, mail) values ('1', 'winston', 'winston@leetcod
 insert into users (user_id, name, mail) values ('3', 'annabelle', 'bella-@leetcode.com');
 insert into users (user_id, name, mail) values ('4', 'sally', 'sally.come@leetcode.com');
 insert into users (user_id, name, mail) values ('5', 'marwan', 'quarz#2020@leetcode.com');
+
+create table if not exists person (personid int, firstname varchar(255), lastname varchar(255));
+
+truncate table person;
+
+create table if not exists address (addressid int, personid int, city varchar(255), state varchar(255));
+
+truncate table address;
+
+insert into person (personid, lastname, firstname) values ('2', 'alice', 'bob');
+insert into person (personid, lastname, firstname) values ('1', 'wang', 'allen');
+
+insert into address (addressid, personid, city, state) values ('2', '3', 'leetcode', 'california');
+insert into address (addressid, personid, city, state) values ('1', '2', 'new york city', 'new york');
