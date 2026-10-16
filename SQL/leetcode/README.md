@@ -3299,6 +3299,71 @@ insert into address (addressid, personid, city, state) values ('2', '3', 'leetco
 insert into address (addressid, personid, city, state) values ('1', '2', 'new york city', 'new york');
 ```
 
+### 0181. Employees Earning More Than Their Managers
+
+#### Statement
+
+```sql
+Table: Employee
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| name        | varchar |
+| salary      | int     |
+| managerId   | int     |
++-------------+---------+
+
+id is the primary key (column with unique values) for this table.
+
+Each row of this table indicates the ID of an employee, their name, salary, and the ID of their manager.
+
+Write a solution to find the employees who earn more than their managers.
+
+Return the result table in any order.
+
+The result format is in the following example.
+
+Example 1:
+
+Input:
+
+Employee table:
++----+-------+--------+-----------+
+| id | name  | salary | managerId |
++----+-------+--------+-----------+
+| 1  | Joe   | 70000  | 3         |
+| 2  | Henry | 80000  | 4         |
+| 3  | Sam   | 60000  | Null      |
+| 4  | Max   | 90000  | Null      |
++----+-------+--------+-----------+
+
+Output:
++----------+
+| Employee |
++----------+
+| Joe      |
++----------+
+
+Explanation: Joe is the only employee who earns more than his manager.
+```
+
+#### Schema
+
+```sql
+drop database if exists sql_50;
+
+create table if not exists employee (id int, name varchar(255), salary int, managerid int);
+
+truncate table employee;
+
+insert into employee (id, name, salary, managerid) values ('1', 'joe', '70000', '3');
+insert into employee (id, name, salary, managerid) values ('2', 'henry', '80000', '4');
+insert into employee (id, name, salary, managerid) values ('3', 'sam', '60000', null);
+insert into employee (id, name, salary, managerid) values ('4', 'max', '90000', null);
+```
+
 ## Author
 
 [Arsalan Ansari](https://www.github.com/madebyarsalan)
