@@ -3364,6 +3364,67 @@ insert into employee (id, name, salary, managerid) values ('3', 'sam', '60000', 
 insert into employee (id, name, salary, managerid) values ('4', 'max', '90000', null);
 ```
 
+### 0182. Duplicate Emails
+
+#### Statement
+
+```sql
+Table: Person
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| email       | varchar |
++-------------+---------+
+
+id is the primary key (column with unique values) for this table.
+
+Each row of this table contains an email. The emails will not contain uppercase letters.
+
+Write a solution to report all the duplicate emails. Note that it's guaranteed that the email field is not NULL.
+
+Return the result table in any order.
+
+The result format is in the following example.
+
+Example 1:
+
+Input:
+
+Person table:
++----+---------+
+| id | email   |
++----+---------+
+| 1  | a@b.com |
+| 2  | c@d.com |
+| 3  | a@b.com |
++----+---------+
+
+Output:
++---------+
+| Email   |
++---------+
+| a@b.com |
++---------+
+
+Explanation: a@b.com is repeated two times.
+```
+
+#### Schema
+
+```sql
+drop database if exists sql_50;
+
+create table if not exists person (id int, email varchar(255));
+
+truncate table person;
+
+insert into person (id, email) values ('1', 'a@b.com');
+insert into person (id, email) values ('2', 'c@d.com');
+insert into person (id, email) values ('3', 'a@b.com');
+```
+
 ## Author
 
 [Arsalan Ansari](https://www.github.com/madebyarsalan)

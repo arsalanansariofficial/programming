@@ -706,3 +706,11 @@ insert into employee (id, name, salary, managerid) values ('1', 'joe', '70000', 
 insert into employee (id, name, salary, managerid) values ('2', 'henry', '80000', '4');
 insert into employee (id, name, salary, managerid) values ('3', 'sam', '60000', null);
 insert into employee (id, name, salary, managerid) values ('4', 'max', '90000', null);
+
+create table if not exists person (id int, email varchar(255));
+
+truncate table person;
+
+insert into person (id, email) values ('1', 'a@b.com');
+insert into person (id, email) values ('2', 'c@d.com');
+insert into person (id, email) values ('3', 'a@b.com');
