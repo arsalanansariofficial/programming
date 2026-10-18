@@ -1,3 +1,51 @@
-# ide files
-.idea
+# vercel
+package-lock.json
+**/*.tar.gz
+**/*.trace
+**/*.zip
+**/*.tgz
+**/*.log
+**/*.bun
+.vercel
+
+# misc
+public/*
+!public/.gitkeep
+.VSCodeCounter
+.DS_Store
 .vscode
+.idea
+*.pem
+
+# local env files
+.env.development.local
+.env.production.local
+.env.test.local
+.env.local
+.env
+
+# debug
+yarn-debug.log*
+yarn-error.log*
+npm-debug.log*
+
+# dependencies
+node_modules
+.pnp.js
+.pnp
+
+# production
+build
+server
+dist
+
+# next.js
+.next/
+out/
+
+# sqlite
+*.sqlite
+*.db
+
+# testing
+coverage

@@ -1,0 +1,20 @@
+{
+  "name": "sql_leetcode",
+  "version": "1.0.0",
+  "keywords": [
+    "postgresql",
+    "sqlite",
+    "mysql",
+    "sql"
+  ],
+  "author": {
+    "name": "Arsalan Ansari"
+  },
+  "scripts": {
+    "format": "prettier -w ."
+  },
+  "devDependencies": {
+    "prettier": "latest",
+    "prettier-plugin-sql": "latest"
+  }
+}
