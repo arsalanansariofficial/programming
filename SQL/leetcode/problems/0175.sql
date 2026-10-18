@@ -1,6 +1,8 @@
-select firstName,
+select
+  firstName,
   lastName,
   city,
   state
-from person
+from
+  person
   left join address on address.personid = person.personid;

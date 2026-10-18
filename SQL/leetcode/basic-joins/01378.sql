@@ -1,4 +1,6 @@
-select unique_id,
+select
+  unique_id,
   name
-from employees
+from
+  employees
   left join employeeuni on employees.id = employeeuni.id;

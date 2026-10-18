@@ -1,3 +1,6 @@
-select *
-from patients
-where conditions regexp '^(diab1)| diab1';
+select
+  *
+from
+  patients
+where
+  conditions regexp '^(diab1)| diab1';

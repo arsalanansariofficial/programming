@@ -1,4 +1,5 @@
-select x,
+select
+  x,
   y,
   z,
   coalesce(
@@ -10,4 +11,5 @@ select x,
     end,
     'No'
   ) as triangle
-from triangle;
+from
+  triangle;

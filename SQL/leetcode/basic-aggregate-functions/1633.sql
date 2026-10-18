@@ -1,4 +1,5 @@
-SELECT contests.contest_id AS contest_id,
+SELECT
+  contests.contest_id AS contest_id,
   ROUND(
     (
       COUNT(
@@ -9,8 +10,11 @@ SELECT contests.contest_id AS contest_id,
     ) * 100,
     2
   ) AS percentage
-FROM users
+FROM
+  users
   JOIN register AS contests
-GROUP BY contests.contest_id
-ORDER BY percentage desc,
+GROUP BY
+  contests.contest_id
+ORDER BY
+  percentage desc,
   contests.contest_id
