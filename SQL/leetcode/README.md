@@ -10,7 +10,7 @@ Queries focusing on **Select** command
 
 #### Statement
 
-```sql
+```txt
 Table Products
 
 +-------------+---------+
@@ -96,7 +96,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Customer
 
 +-------------+---------+
@@ -183,7 +183,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: World
 
 +-------------+---------+
@@ -296,7 +296,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Views
 
 +---------------+---------+
@@ -393,7 +393,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Tweets
 
 +----------------+---------+
@@ -461,7 +461,7 @@ An introduction to **Join** in SQL
 
 #### Statement
 
-```sql
+```txt
 Table: Employees
 
 +---------------+---------+
@@ -588,7 +588,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Sales
 
 +-------------+-------+
@@ -714,7 +714,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Visits
 
 +-------------+---------+
@@ -871,7 +871,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Weather
 
 +---------------+---------+
@@ -950,7 +950,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Activity
 
 +----------------+---------+
@@ -1103,7 +1103,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Employee
 
 +-------------+---------+
@@ -1218,7 +1218,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Students
 
 +---------------+---------+
@@ -1441,7 +1441,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Employee
 
 +-------------+---------+
@@ -1533,7 +1533,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Signups
 
 +----------------+----------+
@@ -1696,7 +1696,7 @@ An introduction to **Aggregate Functions** in SQL
 
 #### Statement
 
-```sql
+```txt
 Table: Prices
 
 +---------------+---------+
@@ -1833,7 +1833,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Project
 
 +-------------+---------+
@@ -1974,7 +1974,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Users
 
 +-------------+---------+
@@ -2157,7 +2157,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Queries
 
 +-------------+---------+
@@ -2274,7 +2274,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Transactions
 
 +---------------+---------+
@@ -2366,7 +2366,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Activity
 
 +--------------+---------+
@@ -2463,7 +2463,7 @@ SQL queries to arrange rows based on a single or multiple columns
 
 #### Statement
 
-```sql
+```txt
 Table: Teacher
 
 +-------------+------+
@@ -2571,7 +2571,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Activity
 
 +---------------+---------+
@@ -2712,7 +2712,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Sales
 
 +-------------+-------+
@@ -2804,7 +2804,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Followers
 
 +-------------+------+
@@ -2885,7 +2885,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: MyNumbers
 
 +-------------+------+
@@ -3014,7 +3014,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Customer
 
 +-------------+---------+
@@ -3140,7 +3140,7 @@ Moving towards **Advanced Select and Join** queries
 
 #### Statement
 
-```sql
+```txt
 Table: Employees
 
 +-------------+----------+
@@ -3263,7 +3263,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Accounts
 
 +-------------+------+
@@ -3360,7 +3360,7 @@ Introduction to **Subqueries**
 
 #### Statement
 
-```sql
+```txt
 Table: Seat
 
 +-------------+---------+
@@ -3453,7 +3453,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Customer
 +---------------+---------+
 | Column Name   | Type    |
@@ -3596,7 +3596,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: RequestAccepted
 
 +----------------+---------+
@@ -3682,7 +3682,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Insurance
 
 +-------------+-------+
@@ -3786,7 +3786,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Employee
 
 +--------------+---------+
@@ -3950,7 +3950,7 @@ Transforming data while quering using **String Functions / Regex / Clause**
 
 #### Statement
 
-```sql
+```txt
 Table: Users
 
 +----------------+---------+
@@ -4017,7 +4017,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Patients
 
 +--------------+---------+
@@ -4109,7 +4109,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Person
 
 +-------------+---------+
@@ -4192,7 +4192,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Users
 +---------------+---------+
 | Column Name   | Type    |
@@ -4308,7 +4308,7 @@ Generic leetcode problems
 
 #### Statement
 
-```sql
+```txt
 Table: Person
 
 +-------------+---------+
@@ -4428,7 +4428,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Employee
 
 +-------------+---------+
@@ -4513,7 +4513,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Person
 
 +-------------+---------+
@@ -4585,7 +4585,7 @@ values
 
 #### Statement
 
-```sql
+```txt
 Table: Customers
 
 +-------------+---------+
