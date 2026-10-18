@@ -714,3 +714,18 @@ truncate table person;
 insert into person (id, email) values ('1', 'a@b.com');
 insert into person (id, email) values ('2', 'c@d.com');
 insert into person (id, email) values ('3', 'a@b.com');
+
+create table if not exists customers (id int, name varchar(255));
+create table if not exists orders (id int, customerid int);
+
+truncate table customers;
+
+insert into customers (id, name) values ('1', 'joe');
+insert into customers (id, name) values ('2', 'henry');
+insert into customers (id, name) values ('3', 'sam');
+insert into customers (id, name) values ('4', 'max');
+
+truncate table orders;
+
+insert into orders (id, customerid) values ('1', '3');
+insert into orders (id, customerid) values ('2', '1');
