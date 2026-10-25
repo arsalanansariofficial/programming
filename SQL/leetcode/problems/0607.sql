@@ -1,0 +1,15 @@
+-- 607. Sales Person
+-- https://leetcode.com/problems/sales-person/description/
+select
+  name
+from
+  salesperson
+where
+  sales_id not in (
+    select
+      o.sales_id as sales_id
+    from
+      orders as o
+      join company as c on c.com_id = o.com_id
+      and c.name = 'red'
+  );
