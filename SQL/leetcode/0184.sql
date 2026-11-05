@@ -1,17 +1,10 @@
 select
-  d.name as Department,
-  e.name as Employee,
-  e.salary as Salary
+  score,
+  dense_rank() over (
+    order by
+      score desc
+  ) as `rank`
 from
-  employee as e
-  join department as d on d.id = e.departmentId
-where
-  (e.departmentId, salary) in (
-    select
-      departmentId,
-      max(salary)
-    from
-      employee
-    group by
-      departmentId
-  );
+  scores
+order by
+  score desc;
