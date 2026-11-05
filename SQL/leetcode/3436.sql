@@ -1,5 +1,3 @@
--- 3436. Find Valid Emails
--- https://leetcode.com/problems/find-valid-emails/description/
 select
   user_id,
   email

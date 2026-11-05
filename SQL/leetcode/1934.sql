@@ -1,12 +1,12 @@
 select
   s.user_id,
-  COALESCE(
+  coalesce(
     round(
       avg(
-        CASE
-          WHEN c.action = 'confirmed' THEN 1
-          ELSE 0
-        END
+        case
+          when c.action = 'confirmed' then 1
+          else 0
+        end
       ),
       3
     ),

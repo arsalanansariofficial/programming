@@ -1,5 +1,3 @@
--- 1084. Sales Analysis III
--- https://leetcode.com/problems/sales-analysis-iii/
 select distinct
   p.product_id,
   p.product_name

@@ -1,5 +1,3 @@
--- 1795. Rearrange Products Table
--- https://leetcode.com/problems/rearrange-products-table/
 select
   product_id,
   'store1' as store,

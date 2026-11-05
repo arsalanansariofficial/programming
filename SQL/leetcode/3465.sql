@@ -1,0 +1,14 @@
+select
+  product_id,
+  product_name,
+  description
+from
+  products
+where
+  regexp_like (
+    description,
+    '(^|[^a-za-z0-9_])sn[0-9]{4}-[0-9]{4}([^a-za-z0-9_]|$)',
+    'c'
+  )
+order by
+  product_id;

@@ -1,5 +1,3 @@
--- 3570. Find Books With No Available Copies
--- https://leetcode.com/problems/find-books-with-no-available-copies/description/
 select
   b.book_id as book_id,
   b.title as title,

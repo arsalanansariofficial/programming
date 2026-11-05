@@ -1,5 +1,3 @@
--- 1179. Reformat Department Table
--- https://leetcode.com/problems/reformat-department-table/description/
 select
   id,
   sum(if (month = 'Jan', revenue, null)) as Jan_Revenue,
